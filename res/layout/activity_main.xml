@@ -9,22 +9,13 @@
     android:layoutDirection="rtl"
     tools:context=".MainActivity" >
 
-    <TextView
-        android:id="@+id/MyTextView"
+    <ImageButton
+        android:id="@+id/AboutButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="@string/hello_world"
-        android:textSize="@dimen/helloworldsize" />
-    <Button 
-        android:id="@+id/MyButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/MyTextView"
-        android:layout_alignRight="@+id/MyTextView"
-        android:layout_alignLeft="@+id/MyTextView"
-        android:text="@string/app_name"/>
+        android:text="@string/app_name"
+        android:contentDescription="@null"/>
 
 </RelativeLayout>
