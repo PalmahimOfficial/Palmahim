@@ -1,5 +1,5 @@
 <LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
-	      android:layout_width="wrap_content"
+	      	android:layout_width="@dimen/app_width"
 		    android:layout_height="wrap_content"
 		    android:gravity="left"
 		    android:layoutDirection="rtl"
@@ -37,7 +37,9 @@
 			        android:layout_height="@dimen/MainActivityButtonSize"
 			        android:scaleType="fitCenter"
 			        android:padding="@dimen/activity_vertical_margin"
-			        android:contentDescription="@null"
+			        android:contentDescription="0"
+			        android:onClick="openPageInformation"
+			        android:background="@null"
 			        android:src="@drawable/history" />
 			    
 			    <ImageButton
@@ -141,10 +143,10 @@
 	</ScrollView>
 	
 	
-	<ScrollView
+	<HorizontalScrollView
 	    android:id="@+id/scrollView2"
-	    android:layout_width="match_parent"
-	    android:layout_height="match_parent"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
 	    android:requiresFadingEdge="horizontal"
 	    android:fadingEdgeLength="20sp">
 		
@@ -159,7 +161,7 @@
 	        android:paddingRight="@dimen/activity_horizontal_margin"
 	        android:paddingTop="@dimen/activity_vertical_margin" >
 		
-		    <ImageButton
+		    <ImageView
 		        android:id="@+id/roll_bar_image_1"
 		        android:layout_width="@dimen/MainActivityRollImageHorizontalSize"
 		        android:layout_height="@dimen/MainActivityRollImageVerticalSize"
@@ -168,7 +170,7 @@
 		        android:contentDescription="@null"
 		        android:src="@drawable/roll_bar_image_1" />
 		    
-		    <ImageButton
+		    <ImageView
 		        android:id="@+id/roll_bar_image_2"
 		        android:layout_width="@dimen/MainActivityRollImageHorizontalSize"
 		        android:layout_height="@dimen/MainActivityRollImageVerticalSize"
@@ -177,7 +179,7 @@
 		        android:contentDescription="@null"
 		        android:src="@drawable/roll_bar_image_2" />
 
-		    <ImageButton
+		    <ImageView
 		        android:id="@+id/roll_bar_image_3"
 		        android:layout_width="@dimen/MainActivityRollImageHorizontalSize"
 		        android:layout_height="@dimen/MainActivityRollImageVerticalSize"
@@ -185,7 +187,7 @@
 		        android:contentDescription="@null"
 		        android:scaleType="centerCrop"
 		        android:src="@drawable/roll_bar_image_3" />
-		    <ImageButton
+		    <ImageView
 		        android:id="@+id/roll_bar_image_4"
 		        android:layout_width="@dimen/MainActivityRollImageHorizontalSize"
 		        android:layout_height="@dimen/MainActivityRollImageVerticalSize"
@@ -193,7 +195,7 @@
 		        android:contentDescription="@null"
 		        android:scaleType="centerCrop"
 		        android:src="@drawable/roll_bar_image_4" />
-		    <ImageButton
+		    <ImageView
 		        android:id="@+id/roll_bar_image_5"
 		        android:layout_width="@dimen/MainActivityRollImageHorizontalSize"
 		        android:layout_height="@dimen/MainActivityRollImageVerticalSize"
@@ -201,7 +203,7 @@
 		        android:contentDescription="@null"
 		        android:scaleType="centerCrop"
 		        android:src="@drawable/roll_bar_image_5" />
-		    <ImageButton
+		    <ImageView
 		        android:id="@+id/roll_bar_image_6"
 		        android:layout_width="@dimen/MainActivityRollImageHorizontalSize"
 		        android:layout_height="@dimen/MainActivityRollImageVerticalSize"
@@ -210,5 +212,5 @@
 		        android:scaleType="centerCrop"
 		        android:src="@drawable/roll_bar_image_6" />
 		</LinearLayout>
-	</ScrollView>
+	</HorizontalScrollView>
 </LinearLayout>
