@@ -15,6 +15,7 @@ public class MainActivity extends Activity {
 	public static MainActivity mainWindow;
 	public String pageTitle, pageBody;
 	public Drawable pageImageDrawable;
+	public String pageXml;
 	private String[] pageTitles, pageBodys, pageImages;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,7 @@ public class MainActivity extends Activity {
 		
 		pageTitle = "Undefined";
 		pageBody = "Undefined";
+		pageXml = "Undefined";
 		pageImageDrawable = null;
 		
 		pageTitles = getResources().getStringArray(R.array.page_titles);
@@ -43,7 +45,7 @@ public class MainActivity extends Activity {
 
 	public void openPageInformation(View view)
 	{
-		int pageNumber = Integer.parseInt(((ImageButton)view).getContentDescription().toString());
+/*		int pageNumber = Integer.parseInt(((ImageButton)view).getContentDescription().toString());
 		pageTitle = pageTitles[pageNumber];
 		pageBody = pageBodys[pageNumber];
 		if (pageImages[pageNumber].compareTo("null") == 0){
@@ -51,7 +53,8 @@ public class MainActivity extends Activity {
 		}
 		else{
 			pageImageDrawable = null; // TODO: Gil Nisan should do some logic here
-		}
+		}*/
+		pageXml = ((ImageButton)view).getContentDescription().toString();
 	    Intent startActivity = new Intent(this, TextInfoActivity.class);
 	    startActivity(startActivity);
 	}

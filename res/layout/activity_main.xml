@@ -92,7 +92,7 @@
 			        android:layout_width="@dimen/MainActivityButtonSize"
 			        android:layout_height="@dimen/MainActivityButtonSize"
 			        android:scaleType="fitCenter"
-			        android:contentDescription="4"
+			        android:contentDescription="keva"
 			        android:onClick="openPageInformation"
 			        android:background="@null"
 			        android:src="@drawable/keva" />
