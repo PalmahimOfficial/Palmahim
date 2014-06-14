@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="@dimen/app_width"
-    android:layout_height="match_parent" >
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
 
     <RelativeLayout
         android:id="@+id/titleLayout"
@@ -9,7 +9,7 @@
         android:layout_height="@dimen/pages_header_title_height"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/info_header_bg_bitmap"
+        android:background="@drawable/info_header_bg"
         android:orientation="horizontal" >
 
         <TextView
@@ -24,10 +24,10 @@
     <ScrollView
         android:id="@+id/scrollBodyContent"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/footerBanner"
         android:layout_below="@id/titleLayout"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/info_body_bg_bitmap"
+        android:background="@drawable/info_body_bg"
         android:padding="7dp" >
 
         <LinearLayout
@@ -36,14 +36,20 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" />
     </ScrollView>
-    
+
+    <RelativeLayout
+        android:id="@+id/footerBanner"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/pages_footer_title_height"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" >
+
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/pages_footer_title_height"
-            android:layout_below="@id/scrollBodyContent"
-            android:layout_centerHorizontal="true"
-            android:scaleType="fitXY"
-            android:src="@drawable/keva_footer_banner"
-            android:contentDescription="@null" />
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:contentDescription="@null"
+            android:scaleType="centerCrop"
+            android:src="@drawable/keva_footer_banner" />
+    </RelativeLayout>
 
 </RelativeLayout>

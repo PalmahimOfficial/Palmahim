@@ -1,230 +1,246 @@
-<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
-	      	android:layout_width="@dimen/app_width"
-		    android:layout_height="wrap_content"
-		    android:gravity="left"
-		    android:layoutDirection="rtl"
-		    android:background="@drawable/info_body_bg_bitmap"
-		    android:orientation="vertical" >
-			   
-	<ScrollView
-	    android:id="@+id/scrollView1"
-	    android:layout_width="match_parent"
-	    android:layout_height="440dp" 
-	    android:requiresFadingEdge="vertical">
-	    
-		
-		<LinearLayout
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:gravity="left"
-		    android:layoutDirection="rtl"
-		    android:orientation="horizontal" >
-			    
-			<!--  First Column -->
-			
-			<LinearLayout
-			    android:layout_width="fill_parent"
-			    android:layout_height="match_parent"
-			    android:layoutDirection="rtl"
-			    android:orientation="vertical"
-			    android:paddingBottom="@dimen/activity_vertical_margin"
-			    android:paddingLeft="@dimen/activity_horizontal_margin"
-			    android:paddingRight="@dimen/activity_horizontal_margin"
-			    android:paddingTop="@dimen/activity_vertical_margin" >
-			
-			    <ImageButton
-			        android:id="@+id/VisionButton"
-			        android:layout_width="@dimen/MainActivityButtonSize"
-			        android:layout_height="@dimen/MainActivityButtonSize"
-			        android:scaleType="fitCenter"
-			        android:contentDescription="0"
-			        android:onClick="openPageInformation"
-			        android:background="@null"
-			        android:src="@drawable/vision" />
-			    
-			    <ImageButton
-			        android:id="@+id/SecurityButton"
-			        android:layout_width="@dimen/MainActivityButtonSize"
-			        android:layout_height="@dimen/MainActivityButtonSize"
-			        android:scaleType="fitCenter"
-			        android:contentDescription="1"
-			        android:onClick="openPageInformation"
-			        android:background="@null"
-			        android:src="@drawable/security" />
-			    
-			    <ImageButton
-			        android:id="@+id/NoalNineButton"
-			        android:layout_width="@dimen/MainActivityButtonSize"
-			        android:layout_height="@dimen/MainActivityButtonSize"
-			        android:scaleType="fitCenter"
-			        android:contentDescription="2"
-			        android:onClick="openPageInformation"
-			        android:background="@null"
-			        android:src="@drawable/noalnine" />
-			
-			</LinearLayout>
-			
-			<!-- Second Column -->
-			
-			<LinearLayout
-			    android:layout_width="fill_parent"
-			    android:layout_height="match_parent"
-			    android:gravity="top"
-			    android:layoutDirection="rtl"
-			    android:orientation="vertical"
-			    android:paddingBottom="@dimen/activity_vertical_margin"
-			    android:paddingLeft="@dimen/activity_horizontal_margin"
-			    android:paddingRight="@dimen/activity_horizontal_margin"
-			    android:paddingTop="@dimen/activity_vertical_margin" >
-			
-			    <ImageButton
-			        android:id="@+id/BusButton"
-			        android:layout_width="@dimen/MainActivityButtonSize"
-			        android:layout_height="@dimen/MainActivityButtonSize"
-			        android:contentDescription="3"
-			        android:onClick="openPageInformation"
-			        android:background="@null"
-			        android:scaleType="fitCenter"
-			        android:src="@drawable/bus" />
-			    
-			    <ImageButton
-			        android:id="@+id/KevaButton"
-			        android:layout_width="@dimen/MainActivityButtonSize"
-			        android:layout_height="@dimen/MainActivityButtonSize"
-			        android:scaleType="fitCenter"
-			        android:contentDescription="keva"
-			        android:onClick="openPageInformation"
-			        android:background="@null"
-			        android:src="@drawable/keva" />
-			    
-			    <ImageButton
-			        android:id="@+id/NehalimButton"
-			        android:layout_width="@dimen/MainActivityButtonSize"
-			        android:layout_height="@dimen/MainActivityButtonSize"
-			        android:scaleType="fitCenter"
-			        android:contentDescription="5"
-			        android:onClick="openPageInformation"
-			        android:background="@null"
-			        android:src="@drawable/information" />
-			
-			</LinearLayout>
-			
-			<!-- Third Column -->
-			
-			<LinearLayout
-			    android:layout_width="fill_parent"
-			    android:layout_height="match_parent"
-			    android:gravity="top"
-			    android:layoutDirection="rtl"
-			    android:orientation="vertical"
-			    android:paddingBottom="@dimen/activity_vertical_margin"
-			    android:paddingLeft="@dimen/activity_horizontal_margin"
-			    android:paddingRight="@dimen/activity_horizontal_margin"
-			    android:paddingTop="@dimen/activity_vertical_margin" >
-			
-			    <ImageButton
-			        android:id="@+id/ServicesButton"
-			        android:layout_width="@dimen/MainActivityButtonSize"
-			        android:layout_height="@dimen/MainActivityButtonSize"
-			        android:scaleType="fitCenter"
-			        android:contentDescription="6"
-			        android:onClick="openPageInformation"
-			        android:background="@null"
-			        android:src="@drawable/services" />
-			    
-			    <ImageButton
-			        android:id="@+id/TashButton"
-			        android:layout_width="@dimen/MainActivityButtonSize"
-			        android:layout_height="@dimen/MainActivityButtonSize"
-			        android:scaleType="fitCenter"
-			        android:contentDescription="7"
-			        android:onClick="openPageInformation"
-			        android:background="@null"
-			        android:src="@drawable/tash" />
-			    
-			    <ImageButton
-			        android:id="@+id/PhonesButton"
-			        android:layout_width="@dimen/MainActivityButtonSize"
-			        android:layout_height="@dimen/MainActivityButtonSize"
-			        android:scaleType="fitCenter"
-			        android:contentDescription="8"
-			        android:onClick="openPageInformation"
-			        android:background="@null"
-			        android:src="@drawable/phone" />
-			
-			</LinearLayout>
-		</LinearLayout>
-	</ScrollView>
-	
-	
-	<HorizontalScrollView
-	    android:id="@+id/scrollView2"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:requiresFadingEdge="horizontal"
-	    android:fadingEdgeLength="20sp">
-		
-	    <LinearLayout
-	        android:layout_width="357dp"
-	        android:layout_height="wrap_content"
-	        android:gravity="top"
-	        android:layoutDirection="rtl"
-	        android:orientation="horizontal"
-	        android:paddingBottom="@dimen/activity_vertical_margin"
-	        android:paddingLeft="@dimen/activity_horizontal_margin"
-	        android:paddingRight="@dimen/activity_horizontal_margin"
-	        android:paddingTop="@dimen/activity_vertical_margin" >
-		
-		    <ImageView
-		        android:id="@+id/roll_bar_image_1"
-		        android:layout_width="@dimen/MainActivityRollImageHorizontalSize"
-		        android:layout_height="@dimen/MainActivityRollImageVerticalSize"
-		        android:adjustViewBounds="true"
-		        android:scaleType="centerCrop"
-		        android:contentDescription="@null"
-		        android:src="@drawable/roll_bar_image_1" />
-		    
-		    <ImageView
-		        android:id="@+id/roll_bar_image_2"
-		        android:layout_width="@dimen/MainActivityRollImageHorizontalSize"
-		        android:layout_height="@dimen/MainActivityRollImageVerticalSize"
-		        android:adjustViewBounds="true"
-		        android:scaleType="centerCrop"
-		        android:contentDescription="@null"
-		        android:src="@drawable/roll_bar_image_2" />
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/info_body_bg"
+    android:gravity="left"
+    android:layoutDirection="rtl"
+    android:orientation="vertical" >
 
-		    <ImageView
-		        android:id="@+id/roll_bar_image_3"
-		        android:layout_width="@dimen/MainActivityRollImageHorizontalSize"
-		        android:layout_height="@dimen/MainActivityRollImageVerticalSize"
-		        android:adjustViewBounds="true"
-		        android:contentDescription="@null"
-		        android:scaleType="centerCrop"
-		        android:src="@drawable/roll_bar_image_3" />
-		    <ImageView
-		        android:id="@+id/roll_bar_image_4"
-		        android:layout_width="@dimen/MainActivityRollImageHorizontalSize"
-		        android:layout_height="@dimen/MainActivityRollImageVerticalSize"
-		        android:adjustViewBounds="true"
-		        android:contentDescription="@null"
-		        android:scaleType="centerCrop"
-		        android:src="@drawable/roll_bar_image_4" />
-		    <ImageView
-		        android:id="@+id/roll_bar_image_5"
-		        android:layout_width="@dimen/MainActivityRollImageHorizontalSize"
-		        android:layout_height="@dimen/MainActivityRollImageVerticalSize"
-		        android:adjustViewBounds="true"
-		        android:contentDescription="@null"
-		        android:scaleType="centerCrop"
-		        android:src="@drawable/roll_bar_image_5" />
-		    <ImageView
-		        android:id="@+id/roll_bar_image_6"
-		        android:layout_width="@dimen/MainActivityRollImageHorizontalSize"
-		        android:layout_height="@dimen/MainActivityRollImageVerticalSize"
-		        android:adjustViewBounds="true"
-		        android:contentDescription="@null"
-		        android:scaleType="centerCrop"
-		        android:src="@drawable/roll_bar_image_6" />
-		</LinearLayout>
-	</HorizontalScrollView>
-</LinearLayout>
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/photosView"
+        android:layout_alignParentTop="true"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:requiresFadingEdge="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/buttonsLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:layoutDirection="rtl"
+            android:orientation="horizontal" >
+
+            <!-- First Column -->
+
+            <LinearLayout
+                android:id="@+id/firstButtonsColumn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layoutDirection="rtl"
+                android:orientation="vertical"
+                android:layout_alignParentLeft="true"
+                android:paddingBottom="@dimen/buttons_padding"
+                android:paddingLeft="@dimen/buttons_padding"
+                android:paddingRight="@dimen/buttons_padding"
+                android:paddingTop="@dimen/buttons_padding" >
+
+                <ImageButton
+                    android:id="@+id/VisionButton"
+                    android:layout_width="@dimen/MainActivityButtonSize"
+                    android:layout_height="@dimen/MainActivityButtonSize"
+                    android:background="@null"
+                    android:contentDescription="0"
+                    android:onClick="openPageInformation"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/vision" />
+
+                <ImageButton
+                    android:id="@+id/SecurityButton"
+                    android:layout_width="@dimen/MainActivityButtonSize"
+                    android:layout_height="@dimen/MainActivityButtonSize"
+                    android:background="@null"
+                    android:contentDescription="1"
+                    android:onClick="openPageInformation"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/security" />
+
+                <ImageButton
+                    android:id="@+id/NoalNineButton"
+                    android:layout_width="@dimen/MainActivityButtonSize"
+                    android:layout_height="@dimen/MainActivityButtonSize"
+                    android:background="@null"
+                    android:contentDescription="2"
+                    android:onClick="openPageInformation"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/noalnine" />
+            </LinearLayout>
+
+            <!-- Second Column -->
+
+            <!-- Third Column -->
+
+            <LinearLayout
+                android:id="@+id/thirdButtonsColumn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:gravity="top"
+                android:layoutDirection="rtl"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/buttons_padding"
+                android:paddingLeft="@dimen/buttons_padding"
+                android:paddingRight="@dimen/buttons_padding"
+                android:paddingTop="@dimen/buttons_padding" >
+
+                <ImageButton
+                    android:id="@+id/ServicesButton"
+                    android:layout_width="@dimen/MainActivityButtonSize"
+                    android:layout_height="@dimen/MainActivityButtonSize"
+                    android:background="@null"
+                    android:contentDescription="6"
+                    android:onClick="openPageInformation"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/services" />
+
+                <ImageButton
+                    android:id="@+id/TashButton"
+                    android:layout_width="@dimen/MainActivityButtonSize"
+                    android:layout_height="@dimen/MainActivityButtonSize"
+                    android:background="@null"
+                    android:contentDescription="7"
+                    android:onClick="openPageInformation"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/tash" />
+
+                <ImageButton
+                    android:id="@+id/PhonesButton"
+                    android:layout_width="@dimen/MainActivityButtonSize"
+                    android:layout_height="@dimen/MainActivityButtonSize"
+                    android:background="@null"
+                    android:contentDescription="8"
+                    android:onClick="openPageInformation"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/phone" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/secondButtonsConlumn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:gravity="top"
+                android:layoutDirection="rtl"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/buttons_padding"
+                android:paddingLeft="@dimen/buttons_padding"
+                android:paddingRight="@dimen/buttons_padding"
+                android:paddingTop="@dimen/buttons_padding" >
+
+                <ImageButton
+                    android:id="@+id/BusButton"
+                    android:layout_width="@dimen/MainActivityButtonSize"
+                    android:layout_height="@dimen/MainActivityButtonSize"
+                    android:background="@null"
+                    android:contentDescription="3"
+                    android:onClick="openPageInformation"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/bus" />
+
+                <ImageButton
+                    android:id="@+id/KevaButton"
+                    android:layout_width="@dimen/MainActivityButtonSize"
+                    android:layout_height="@dimen/MainActivityButtonSize"
+                    android:background="@null"
+                    android:contentDescription="keva"
+                    android:onClick="openPageInformation"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/keva" />
+
+                <ImageButton
+                    android:id="@+id/NehalimButton"
+                    android:layout_width="@dimen/MainActivityButtonSize"
+                    android:layout_height="@dimen/MainActivityButtonSize"
+                    android:background="@null"
+                    android:contentDescription="5"
+                    android:onClick="openPageInformation"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/information" />
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <HorizontalScrollView
+        android:id="@+id/photosView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:fadingEdgeLength="20sp"
+        android:requiresFadingEdge="horizontal" >
+
+        <LinearLayout
+            android:layout_width="357dp"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:layoutDirection="rtl"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin" >
+
+            <ImageView
+                android:id="@+id/roll_bar_image_1"
+                android:layout_width="@dimen/MainActivityRollImageHorizontalSize"
+                android:layout_height="@dimen/MainActivityRollImageVerticalSize"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null"
+                android:scaleType="centerCrop"
+                android:src="@drawable/roll_bar_image_1" />
+
+            <ImageView
+                android:id="@+id/roll_bar_image_2"
+                android:layout_width="@dimen/MainActivityRollImageHorizontalSize"
+                android:layout_height="@dimen/MainActivityRollImageVerticalSize"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null"
+                android:scaleType="centerCrop"
+                android:src="@drawable/roll_bar_image_2" />
+
+            <ImageView
+                android:id="@+id/roll_bar_image_3"
+                android:layout_width="@dimen/MainActivityRollImageHorizontalSize"
+                android:layout_height="@dimen/MainActivityRollImageVerticalSize"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null"
+                android:scaleType="centerCrop"
+                android:src="@drawable/roll_bar_image_3" />
+
+            <ImageView
+                android:id="@+id/roll_bar_image_4"
+                android:layout_width="@dimen/MainActivityRollImageHorizontalSize"
+                android:layout_height="@dimen/MainActivityRollImageVerticalSize"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null"
+                android:scaleType="centerCrop"
+                android:src="@drawable/roll_bar_image_4" />
+
+            <ImageView
+                android:id="@+id/roll_bar_image_5"
+                android:layout_width="@dimen/MainActivityRollImageHorizontalSize"
+                android:layout_height="@dimen/MainActivityRollImageVerticalSize"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null"
+                android:scaleType="centerCrop"
+                android:src="@drawable/roll_bar_image_5" />
+
+            <ImageView
+                android:id="@+id/roll_bar_image_6"
+                android:layout_width="@dimen/MainActivityRollImageHorizontalSize"
+                android:layout_height="@dimen/MainActivityRollImageVerticalSize"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null"
+                android:scaleType="centerCrop"
+                android:src="@drawable/roll_bar_image_6" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+</RelativeLayout>
