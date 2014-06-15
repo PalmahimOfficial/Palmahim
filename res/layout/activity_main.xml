@@ -44,7 +44,7 @@
                     android:layout_width="@dimen/MainActivityButtonSize"
                     android:layout_height="@dimen/MainActivityButtonSize"
                     android:background="@null"
-                    android:contentDescription="0"
+                    android:contentDescription="vision"
                     android:onClick="openPageInformation"
                     android:scaleType="fitCenter"
                     android:src="@drawable/vision" />
@@ -54,7 +54,7 @@
                     android:layout_width="@dimen/MainActivityButtonSize"
                     android:layout_height="@dimen/MainActivityButtonSize"
                     android:background="@null"
-                    android:contentDescription="1"
+                    android:contentDescription="security"
                     android:onClick="openPageInformation"
                     android:scaleType="fitCenter"
                     android:src="@drawable/security" />
@@ -64,7 +64,7 @@
                     android:layout_width="@dimen/MainActivityButtonSize"
                     android:layout_height="@dimen/MainActivityButtonSize"
                     android:background="@null"
-                    android:contentDescription="2"
+                    android:contentDescription="noal_nine"
                     android:onClick="openPageInformation"
                     android:scaleType="fitCenter"
                     android:src="@drawable/noalnine" />
@@ -104,7 +104,7 @@
                     android:layout_width="@dimen/MainActivityButtonSize"
                     android:layout_height="@dimen/MainActivityButtonSize"
                     android:background="@null"
-                    android:contentDescription="7"
+                    android:contentDescription="tash"
                     android:onClick="openPageInformation"
                     android:scaleType="fitCenter"
                     android:src="@drawable/tash" />
@@ -159,7 +159,7 @@
                     android:layout_width="@dimen/MainActivityButtonSize"
                     android:layout_height="@dimen/MainActivityButtonSize"
                     android:background="@null"
-                    android:contentDescription="5"
+                    android:contentDescription="information"
                     android:onClick="openPageInformation"
                     android:scaleType="fitCenter"
                     android:src="@drawable/information" />

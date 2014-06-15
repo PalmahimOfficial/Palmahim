@@ -2,7 +2,6 @@ package com.IAF.Palmahim;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -13,24 +12,14 @@ import android.widget.ImageButton;
 public class MainActivity extends Activity {
 
 	public static MainActivity mainWindow;
-	public String pageTitle, pageBody;
-	public Drawable pageImageDrawable;
 	public String pageXml;
-	private String[] pageTitles, pageBodys, pageImages;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
 		mainWindow = this;
 		
-		pageTitle = "Undefined";
-		pageBody = "Undefined";
 		pageXml = "Undefined";
-		pageImageDrawable = null;
-		
-		pageTitles = getResources().getStringArray(R.array.page_titles);
-		pageBodys = getResources().getStringArray(R.array.page_bodys);
-		pageImages = getResources().getStringArray(R.array.page_images);
 				
 		// Remove title bar
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -45,15 +34,6 @@ public class MainActivity extends Activity {
 
 	public void openPageInformation(View view)
 	{
-/*		int pageNumber = Integer.parseInt(((ImageButton)view).getContentDescription().toString());
-		pageTitle = pageTitles[pageNumber];
-		pageBody = pageBodys[pageNumber];
-		if (pageImages[pageNumber].compareTo("null") == 0){
-			pageImageDrawable = null;
-		}
-		else{
-			pageImageDrawable = null; // TODO: Gil Nisan should do some logic here
-		}*/
 		pageXml = ((ImageButton)view).getContentDescription().toString();
 	    Intent startActivity = new Intent(this, TextInfoActivity.class);
 	    startActivity(startActivity);

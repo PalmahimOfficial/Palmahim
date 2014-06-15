@@ -173,7 +173,8 @@ public class TextInfoActivity extends Activity {
 		
 		LinearLayout addTextTo = pageBody;
 		Resources res = this.getResources();
-		XmlResourceParser xpp = res.getXml(R.xml.keva);
+		int xmlId = res.getIdentifier("@xml/" + MainActivity.mainWindow.pageXml, null, getPackageName());
+		XmlResourceParser xpp = res.getXml(xmlId);
 		xpp.next();
 		int eventType = xpp.getEventType();
 		while (eventType != XmlPullParser.END_DOCUMENT)
