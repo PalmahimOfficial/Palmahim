@@ -18,6 +18,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.ContactsContract;
 import android.text.Html;
 import android.text.Layout;
@@ -157,8 +158,9 @@ public class TextInfoActivity extends Activity {
 			{
 		Typeface face=Typeface.createFromAsset(getAssets(),
 				"fonts/Tahoma.ttf");
-		ScrollView scrollView = (ScrollView)findViewById(R.id.scrollBodyContent);
-		LinearLayout pageBody = (LinearLayout)scrollView.getChildAt(0);
+		final ScrollView scrollView = (ScrollView)findViewById(R.id.scrollBodyContent);
+		final LinearLayout pageBody = (LinearLayout)scrollView.getChildAt(0);
+		final LinearLayout pageSections = (LinearLayout)findViewById(R.id.menuLayout);
 
 		//image Layouts and texts
 		RelativeLayout relativeImageTextLayout = null;
@@ -386,8 +388,24 @@ public class TextInfoActivity extends Activity {
 				{
 					textView.setTypeface(face, Typeface.BOLD);
 					textView.setTextColor(getResources().getColor(android.R.color.holo_blue_dark));
+					textView.setTextSize((float)(textView.getTextSize() * 1.4));
 					textView.setText(textValue);
 					pageBody.addView(textView, pageBody.getChildCount());
+					
+					// Putting link in the head
+					TextView newTextView = new TextView(this);
+					newTextView.setPadding(12, 5, 12, 5);
+					newTextView.setTextColor(getResources().getColor(android.R.color.white));
+					newTextView.setTextSize(getResources().getDimension(R.dimen.head_link_text_size));
+					newTextView.setText(textValue);
+					newTextView.setTag(textView);
+					newTextView.setOnClickListener(new View.OnClickListener() {
+						@Override
+						public void onClick(View view) {
+							scrollView.scrollTo(0, ((View)view.getTag()).getTop());
+						}
+					});
+					pageSections.addView(newTextView, 0);
 					break;
 				}
 				case TEXT:

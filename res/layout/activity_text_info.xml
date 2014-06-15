@@ -20,15 +20,29 @@
             android:textColor="@color/white"
             android:textSize="@dimen/pages_header_tilte_size" />
     </RelativeLayout>
+    
+    <LinearLayout
+        android:id="@+id/menuLayout"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@id/titleLayout"
+        android:layout_centerHorizontal="true"
+        android:gravity="right"
+        android:background="@color/darkblue"
+        android:orientation="horizontal" >
+
+
+    </LinearLayout>
 
     <ScrollView
         android:id="@+id/scrollBodyContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/footerBanner"
-        android:layout_below="@id/titleLayout"
+        android:layout_below="@id/menuLayout"
         android:background="@drawable/info_body_bg"
-        android:padding="7dp" >
+        android:padding="7dp"
+        android:paddingTop="25dp" >
 
         <LinearLayout
             android:id="@+id/pageBodyContent"

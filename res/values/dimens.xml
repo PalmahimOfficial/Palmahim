@@ -12,5 +12,6 @@
     <dimen name="pages_footer_title_height">100dp</dimen>
     <dimen name="pages_header_tilte_size">40sp</dimen>
     <dimen name="pages_body_text_size">16sp</dimen>
+    <dimen name="head_link_text_size">14sp</dimen>
 
 </resources>
