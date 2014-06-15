@@ -10,8 +10,8 @@
         android:id="@+id/scrollView1"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_above="@+id/photosView"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/headerMainActivity"
+        android:layout_centerHorizontal="true"
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
@@ -23,8 +23,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="left"
-            android:layoutDirection="rtl"
-            android:orientation="horizontal" >
+            android:layoutDirection="rtl" >
 
             <!-- First Column -->
 
@@ -32,9 +31,9 @@
                 android:id="@+id/firstButtonsColumn"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
                 android:layoutDirection="rtl"
                 android:orientation="vertical"
-                android:layout_alignParentLeft="true"
                 android:paddingBottom="@dimen/buttons_padding"
                 android:paddingLeft="@dimen/buttons_padding"
                 android:paddingRight="@dimen/buttons_padding"
@@ -72,6 +71,7 @@
             </LinearLayout>
 
             <!-- Second Column -->
+
 
             <!-- Third Column -->
 
@@ -164,7 +164,6 @@
                     android:scaleType="fitCenter"
                     android:src="@drawable/information" />
             </LinearLayout>
-
         </RelativeLayout>
     </ScrollView>
 
@@ -240,7 +239,111 @@
                 android:contentDescription="@null"
                 android:scaleType="centerCrop"
                 android:src="@drawable/roll_bar_image_6" />
+            
+             <ImageView
+                android:id="@+id/roll_bar_image_7"
+                android:layout_width="@dimen/MainActivityRollImageHorizontalSize"
+                android:layout_height="@dimen/MainActivityRollImageVerticalSize"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null"
+                android:scaleType="centerCrop"
+                android:src="@drawable/roll_bar_image_1" />
+
+            <ImageView
+                android:id="@+id/roll_bar_image_8"
+                android:layout_width="@dimen/MainActivityRollImageHorizontalSize"
+                android:layout_height="@dimen/MainActivityRollImageVerticalSize"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null"
+                android:scaleType="centerCrop"
+                android:src="@drawable/roll_bar_image_2" />
+
+            <ImageView
+                android:id="@+id/roll_bar_image_9"
+                android:layout_width="@dimen/MainActivityRollImageHorizontalSize"
+                android:layout_height="@dimen/MainActivityRollImageVerticalSize"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null"
+                android:scaleType="centerCrop"
+                android:src="@drawable/roll_bar_image_3" />
+
+            <ImageView
+                android:id="@+id/roll_bar_image_10"
+                android:layout_width="@dimen/MainActivityRollImageHorizontalSize"
+                android:layout_height="@dimen/MainActivityRollImageVerticalSize"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null"
+                android:scaleType="centerCrop"
+                android:src="@drawable/roll_bar_image_4" />
+
+            <ImageView
+                android:id="@+id/roll_bar_image_11"
+                android:layout_width="@dimen/MainActivityRollImageHorizontalSize"
+                android:layout_height="@dimen/MainActivityRollImageVerticalSize"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null"
+                android:scaleType="centerCrop"
+                android:src="@drawable/roll_bar_image_5" />
+
+            <ImageView
+                android:id="@+id/roll_bar_image_12"
+                android:layout_width="@dimen/MainActivityRollImageHorizontalSize"
+                android:layout_height="@dimen/MainActivityRollImageVerticalSize"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null"
+                android:scaleType="centerCrop"
+                android:src="@drawable/roll_bar_image_6" />
         </LinearLayout>
     </HorizontalScrollView>
+
+    <RelativeLayout
+        android:id="@+id/headerMainActivity"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/main_activity_header_title_height"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/info_header_bg" >
+
+        <ImageView
+            android:id="@+id/mahan_logo_view"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/main_activity_header_title_height"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="7dp"
+            android:paddingLeft="@dimen/main_activity_header_padding"
+            android:adjustViewBounds="true"
+            android:contentDescription="@null"
+            android:scaleType="fitXY"
+            android:src="@drawable/mahan_logo" />
+
+        <ImageView
+            android:id="@+id/palmachim_symbol_view"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/main_activity_header_title_height"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="7dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@null"
+            android:paddingRight="@dimen/main_activity_header_padding"
+            android:scaleType="fitXY"
+            android:src="@drawable/palmachim_symbol" />
+
+        <TextView
+            android:id="@+id/pageTextTitleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/palmachim_symbol_view"
+            android:layout_toRightOf="@+id/mahan_logo_view"
+            android:gravity="center"
+            android:textSize="@dimen/main_activity_title_text_size"
+            android:textAlignment="gravity"
+            android:fontFamily="sans"
+            android:text="פלמחים - שיתוף פעולה מנצח"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
 
 </RelativeLayout>
