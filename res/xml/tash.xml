@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <page>
-	<header>תנאי שירות )ת"ש(:</header>
+	<head>תנאי שירות</head>
 
 	<sections>
 		<section>
@@ -96,5 +96,5 @@
 			</bulter>
 		</section>
 	</sections>
-
+	<footer>tash_footer</footer>
 </page>

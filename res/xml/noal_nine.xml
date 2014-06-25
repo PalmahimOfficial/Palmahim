@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <page>
-	<header>נוהל 9</header>
+	<head>נוהל 9</head>
 	<sections>
 		<section>
 			<bullet>
@@ -26,4 +26,5 @@
 			
 		</section>
 	</sections>
+	<footer>noal_nine_footer</footer>
 </page>

@@ -8,4 +8,9 @@
 <dimen name="main_activity_header_title_height">100dp</dimen>
     <dimen name="main_activity_header_padding">15dp</dimen>
 <dimen name="main_activity_title_text_size">30sp</dimen>
+    <dimen name="pages_footer_title_height">60dp</dimen>
+    <dimen name="pages_header_tilte_size">20sp</dimen>
+    <dimen name="pages_body_text_size">10sp</dimen>
+    <dimen name="pages_body_headers_size">18sp</dimen>
+    <dimen name="head_link_text_size">14sp</dimen>
 </resources>

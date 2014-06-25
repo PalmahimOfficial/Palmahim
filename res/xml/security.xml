@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <page>
-	<header>אבטחת מידע</header>
+	<head>אבטחת מידע</head>
 	<sections>
 		<section>
 		
@@ -104,4 +104,5 @@
 			</bold>
 		</section>
 	</sections>
+	<footer>security_footer</footer>
 </page>

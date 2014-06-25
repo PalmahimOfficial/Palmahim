@@ -3,5 +3,7 @@
 
     <string name="app_name">Palmahim</string>
     <string name="action_settings">Settings</string>
-
+	<string name="getDirectionsButtonText">לטרמפיאדת יבנה</string>
+	<string name="getDirectionsByCarButtonText">לטרמפיאדת יבנה ברכב</string>
+	<string name="mainActivityheaderText">פלמחים - שיתוף פעולה מנצח</string>
 </resources>

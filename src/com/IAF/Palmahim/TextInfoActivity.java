@@ -26,8 +26,10 @@ import android.text.util.Linkify;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup.MarginLayoutParams;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -54,7 +56,8 @@ public class TextInfoActivity extends Activity {
 		RIGHT("right"),
 		LEFT("left"),
 		ABOVE("above"),
-		BELOW("below");
+		BELOW("below"),
+		FOOTER("footer");
 
 		String tag_name;
 
@@ -101,6 +104,9 @@ public class TextInfoActivity extends Activity {
 			}
 			else if(tagName.compareTo(NUMBER.tag_name)==0){
 				return NUMBER;
+			}
+			else if(tagName.compareTo(FOOTER.tag_name)==0){
+				return FOOTER;
 			}
 
 			else{
@@ -160,7 +166,8 @@ public class TextInfoActivity extends Activity {
 				"fonts/Tahoma.ttf");
 		final ScrollView scrollView = (ScrollView)findViewById(R.id.scrollBodyContent);
 		final LinearLayout pageBody = (LinearLayout)scrollView.getChildAt(0);
-		final LinearLayout pageSections = (LinearLayout)findViewById(R.id.menuLayout);
+		HorizontalScrollView scrollBodyLinksContent = (HorizontalScrollView)findViewById(R.id.scrollBodyLinksContent);
+		final LinearLayout pageSections = (LinearLayout)scrollBodyLinksContent.getChildAt(0);
 
 		//image Layouts and texts
 		RelativeLayout relativeImageTextLayout = null;
@@ -170,6 +177,10 @@ public class TextInfoActivity extends Activity {
 		//text Tag TextView
 		TextView textView = buildTextView(sectionId++);
 
+		//Footer Banner RelativeLayout and ImageView
+		RelativeLayout footerLayout = (RelativeLayout)findViewById(R.id.footerBanner);
+		ImageView footerImage = (ImageView)findViewById(R.id.footerBannerImage);
+		
 		
 		LinearLayout addTextTo = pageBody;
 		Resources res = this.getResources();
@@ -246,6 +257,7 @@ public class TextInfoActivity extends Activity {
 					break;
 				case TEXT:
 				{
+					textView.setPadding(0, 0, 0, 0);
 					addTextTo.addView(textView, addTextTo.getChildCount());
 					if(!isImage){
 						tagState = TagState.SECTION;
@@ -257,7 +269,9 @@ public class TextInfoActivity extends Activity {
 				}
 				case BOLD:
 				{
-					addTextTo.addView(textView, addTextTo.getChildCount());
+					LinearLayout.LayoutParams marginLayoutParams = new LinearLayout.LayoutParams(textView.getLayoutParams());
+					marginLayoutParams.setMargins(0, 5, 0, 5);
+					addTextTo.addView(textView, addTextTo.getChildCount(),marginLayoutParams);
 					if(!isImage){
 						tagState = TagState.SECTION;
 					}
@@ -268,7 +282,9 @@ public class TextInfoActivity extends Activity {
 				}
 				case BULLET:
 				{
-					addTextTo.addView(textView, addTextTo.getChildCount());
+					LinearLayout.LayoutParams marginLayoutParams = new LinearLayout.LayoutParams(textView.getLayoutParams());
+					marginLayoutParams.setMargins(0, -5, 0, -5);
+					addTextTo.addView(textView, addTextTo.getChildCount(),marginLayoutParams);
 					if(!isImage){
 						tagState = TagState.SECTION;
 					}
@@ -387,11 +403,14 @@ public class TextInfoActivity extends Activity {
 				}
 				case HEADER:
 				{
+					LinearLayout.LayoutParams marginLayoutParams = new LinearLayout.LayoutParams(textView.getLayoutParams());
+					marginLayoutParams.setMargins(0, 15, 0, 15);
+					
 					textView.setTypeface(face, Typeface.BOLD);
 					textView.setTextColor(getResources().getColor(android.R.color.holo_blue_dark));
-					textView.setTextSize((float)(textView.getTextSize() * 1.4));
+					textView.setTextSize(getResources().getDimension(R.dimen.pages_body_headers_size));
 					textView.setText(textValue);
-					pageBody.addView(textView, pageBody.getChildCount());
+					pageBody.addView(textView, pageBody.getChildCount(),marginLayoutParams);
 					
 					// Putting link in the head
 					TextView newTextView = new TextView(this);
@@ -417,6 +436,7 @@ public class TextInfoActivity extends Activity {
 				case BOLD:
 				{
 					textView.setTypeface(face, Typeface.BOLD);
+					textView.setTextSize(getResources().getDimension(R.dimen.head_link_text_size));
 					textView.setText(textValue);
 					break;
 				}
@@ -495,12 +515,28 @@ public class TextInfoActivity extends Activity {
 					//Linkify.addLinks(textView, Linkify.ALL);
 					break;
 				}
+				case FOOTER:
+				{
+					int imageId = getResources().getIdentifier("@drawable/" + textValue, null, getPackageName());
+					Drawable resource = getResources().getDrawable(imageId);
+					footerImage.setImageDrawable(resource);
+					break;
+				}
 				default:
 					break;
 				}
 			}
 			eventType = xpp.next();
 		}
+		
+		new Handler().postDelayed(new Runnable(){   
+			@Override
+			public void run() {
+				HorizontalScrollView scrollBodyLinksContent = (HorizontalScrollView)findViewById(R.id.scrollBodyLinksContent);
+				scrollBodyLinksContent.scrollTo(scrollBodyLinksContent.getRight(), scrollBodyLinksContent.getTop());
+			    }       
+
+			},100L);
 			}
 
 

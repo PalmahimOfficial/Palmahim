@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <page>
-	<header>נהלים</header>
+	<head>נהלים</head>
 	
 	<sections>
 		<section>
@@ -175,4 +175,5 @@
 		</bullet>
 		</section>
 	</sections>
+	<footer>information_footer</footer>
 </page>

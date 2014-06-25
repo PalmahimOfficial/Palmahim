@@ -21,25 +21,34 @@
             android:textSize="@dimen/pages_header_tilte_size" />
     </RelativeLayout>
     
-    <LinearLayout
-        android:id="@+id/menuLayout"
+    <HorizontalScrollView
+        android:id="@+id/scrollBodyLinksContent"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_below="@id/titleLayout"
         android:layout_centerHorizontal="true"
-        android:gravity="right"
         android:background="@color/darkblue"
+        android:requiresFadingEdge="horizontal" >
+        
+        <LinearLayout
+        android:id="@+id/menuLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        
+        android:gravity="right"
         android:orientation="horizontal" >
 
 
     </LinearLayout>
+    </HorizontalScrollView>
+    
 
     <ScrollView
         android:id="@+id/scrollBodyContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/footerBanner"
-        android:layout_below="@id/menuLayout"
+        android:layout_below="@id/scrollBodyLinksContent"
         android:background="@drawable/info_body_bg"
         android:padding="7dp"
         android:paddingTop="25dp" >
@@ -59,11 +68,12 @@
         android:layout_centerHorizontal="true" >
 
         <ImageView
+            android:id="@+id/footerBannerImage"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:contentDescription="@null"
-            android:scaleType="centerCrop"
-            android:src="@drawable/keva_footer_banner" />
+            android:src="@drawable/roll_bar_image_0"
+            android:scaleType="centerCrop" />
     </RelativeLayout>
 
 </RelativeLayout>
