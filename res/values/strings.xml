@@ -6,4 +6,7 @@
 	<string name="getDirectionsButtonText">לטרמפיאדת יבנה</string>
 	<string name="getDirectionsByCarButtonText">לטרמפיאדת יבנה ברכב</string>
 	<string name="mainActivityheaderText">פלמחים - שיתוף פעולה מנצח</string>
+	
+    <string name="changelog_full_title">ברוכים הבאים לבסיס פלמחים</string>
+    <string name="changelog_ok_button">המשך</string>
 </resources>

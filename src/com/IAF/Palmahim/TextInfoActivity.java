@@ -281,7 +281,7 @@ public class TextInfoActivity extends Activity {
 				case BULLET:
 				{
 					LinearLayout.LayoutParams marginLayoutParams = new LinearLayout.LayoutParams(textView.getLayoutParams());
-					marginLayoutParams.setMargins(0, -5, 0, -5);
+					marginLayoutParams.setMargins(0, -5, 20, -5);
 					addTextTo.addView(textView, addTextTo.getChildCount(),marginLayoutParams);
 					if(!isImage){
 						tagState = TagState.SECTION;
@@ -354,6 +354,9 @@ public class TextInfoActivity extends Activity {
 			else if(eventType == XmlPullParser.TEXT)
 			{
 				String textValue = xpp.getText();
+				textValue = textValue.replace('(', '^');
+				textValue = textValue.replace(')', '(');
+				textValue = textValue.replace('^', ')');
 				switch (tagState){
 				case HEAD:
 				{
@@ -407,8 +410,7 @@ public class TextInfoActivity extends Activity {
 				}
 				case BULLET:
 				{
-					textValue = textValue.replace("\n", "\n\t  ");
-					String fullString = "\t" + Html.fromHtml("&#8226;").toString() + textValue;
+					String fullString = Html.fromHtml("&#8226;").toString() + textValue;
 					textView.setGravity(Gravity.RIGHT);
 					textView.setText(fullString);
 					break;
