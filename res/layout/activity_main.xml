@@ -106,7 +106,7 @@
                     android:layout_width="@dimen/MainActivityButtonSize"
                     android:layout_height="@dimen/MainActivityButtonSize"
                     android:background="@null"
-                    android:contentDescription="6"
+                    android:contentDescription="soldier_services"
                     android:onClick="openPageInformation"
                     android:scaleType="fitCenter"
                     android:src="@drawable/services" />
@@ -181,11 +181,14 @@
     
     <ImageView
         android:id="@+id/photosView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/MainActivityRollImageVerticalSize"
-        android:scaleType="fitCenter"
+        android:scaleType="centerCrop"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:paddingBottom="50dp"
         android:onClick="switchImage" >
     </ImageView>
        

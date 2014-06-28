@@ -57,7 +57,7 @@ public class MainActivity extends Activity {
 	private ImageSwitcher imageSwitcher;
 	private ImageView footerImageView;
 	private Random rand;
-	private int NUM_OF_SWITCHER_PHOTOS = 8;
+	private int NUM_OF_SWITCHER_PHOTOS = 18;
 	private Animation in;
 	private Animation out;
 	

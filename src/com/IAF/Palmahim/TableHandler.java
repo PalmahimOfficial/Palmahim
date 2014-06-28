@@ -17,6 +17,7 @@ public class TableHandler {
 	Context context;
 	LinearLayout parent;
 	int[] COLORS = {R.color.darkred,R.color.blue};
+	int COLS_AVG_SIZE = 100;
 	
 	public TableHandler(Context context ,LinearLayout parent){
 		this.context = context;
@@ -39,9 +40,10 @@ public class TableHandler {
 		return textView;
 	}
 
-	public void buildTable(final String tableContent){
+	public void buildTable(final String tableContent, int width){
 		TextView tableTextView = buildTextView();
-		LinearLayout.LayoutParams llp = new LinearLayout.LayoutParams(600,LayoutParams.WRAP_CONTENT);
+		final int numOfCols = tableContent.split("_")[1].split(";").length;
+		LinearLayout.LayoutParams llp = new LinearLayout.LayoutParams(numOfCols*COLS_AVG_SIZE,LayoutParams.WRAP_CONTENT);
 		llp.setMargins(0, 10, 0, 10);
 		tableTextView.setLayoutParams(llp);
 		parent.addView(tableTextView, parent.getChildCount());
@@ -63,7 +65,7 @@ public class TableHandler {
 
 				TableLayout tmpTableLayout = new TableLayout(context.getApplicationContext());
 				tmpTableLayout.setLayoutParams(v.getLayoutParams());
-				buildTable(tmpTableLayout ,tableContent,7);
+				buildTable(tmpTableLayout ,tableContent, numOfCols);
 				tmpTableLayout.setOnClickListener(new OnClickListener() {
 
 					TableLayout relatedTable = null;
@@ -85,7 +87,7 @@ public class TableHandler {
 		});
 	}
 	
-	private void buildTable(TableLayout tableLayout ,String content ,int numOfCols){
+	private void buildTable(TableLayout tableLayout ,String content, int numOfCols){
 		String[] rows  = content.split("_");
 
 		//tableLayout.setColumnStretchable(numOfCols-2, true);
