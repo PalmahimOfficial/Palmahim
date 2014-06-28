@@ -55,8 +55,7 @@ public class TextInfoActivity extends Activity {
 		NUMBER("number"),
 		RIGHT("right"),
 		LEFT("left"),
-		ABOVE("above"),
-		BELOW("below"),
+		TABLE("table"),
 		FOOTER("footer");
 
 		String tag_name;
@@ -93,11 +92,8 @@ public class TextInfoActivity extends Activity {
 			else if(tagName.compareTo(LEFT.tag_name)==0){
 				return LEFT;
 			}
-			else if(tagName.compareTo(ABOVE.tag_name)==0){
-				return ABOVE;
-			}
-			else if(tagName.compareTo(BELOW.tag_name)==0){
-				return BELOW;
+			else if(tagName.compareTo(TABLE.tag_name)==0){
+				return TABLE;
 			}
 			else if(tagName.compareTo(TEXT.tag_name)==0){
 				return TEXT;
@@ -181,6 +177,8 @@ public class TextInfoActivity extends Activity {
 		RelativeLayout footerLayout = (RelativeLayout)findViewById(R.id.footerBanner);
 		ImageView footerImage = (ImageView)findViewById(R.id.footerBannerImage);
 		
+		//Tables Handler
+		TableHandler tablesHandler = new TableHandler(getApplicationContext(),pageBody);
 		
 		LinearLayout addTextTo = pageBody;
 		Resources res = this.getResources();
@@ -339,44 +337,6 @@ public class TextInfoActivity extends Activity {
 					}
 					break;
 				}
-				case ABOVE:
-				{
-					tagState = TagState.IMAGE;
-					if(relativeImageTextLayout != null){
-						RelativeLayout.LayoutParams imageLayoutParams= new RelativeLayout.LayoutParams(imgView.getLayoutParams());
-						imageLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_TOP);
-						//imageLayoutParams.addRule(RelativeLayout.RIGHT_OF,imageTextLinearLayout.getId());
-						relativeImageTextLayout.addView(imgView,relativeImageTextLayout.getChildCount(),imageLayoutParams);
-
-						RelativeLayout.LayoutParams textLayoutParams= new RelativeLayout.LayoutParams(imageTextLinearLayout.getLayoutParams());
-						//textLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-						textLayoutParams.addRule(RelativeLayout.BELOW,imgView.getId());
-						relativeImageTextLayout.addView(imageTextLinearLayout,relativeImageTextLayout.getChildCount(),textLayoutParams);
-					}
-					else{
-						Log.e("XMLParser", "Error with <image> tag in page xml");
-					}
-					break;
-				}
-				case BELOW:
-				{
-					tagState = TagState.IMAGE;
-					if(relativeImageTextLayout != null){
-						RelativeLayout.LayoutParams imageLayoutParams= new RelativeLayout.LayoutParams(imgView.getLayoutParams());
-						imageLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-						//imageLayoutParams.addRule(RelativeLayout.RIGHT_OF,imageTextLinearLayout.getId());
-						relativeImageTextLayout.addView(imgView,relativeImageTextLayout.getChildCount(),imageLayoutParams);
-
-						RelativeLayout.LayoutParams textLayoutParams= new RelativeLayout.LayoutParams(imageTextLinearLayout.getLayoutParams());
-						//textLayoutParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-						textLayoutParams.addRule(RelativeLayout.ABOVE,imgView.getId());
-						relativeImageTextLayout.addView(imageTextLinearLayout,relativeImageTextLayout.getChildCount(),textLayoutParams);
-					}
-					else{
-						Log.e("XMLParser", "Error with <image> tag in page xml");
-					}
-					break;
-				}
 				case NUMBER:
 				{
 					if(!isImage){
@@ -433,6 +393,11 @@ public class TextInfoActivity extends Activity {
 					textView.setText(textValue);
 					break;
 				}
+				case TABLE:
+				{
+					tablesHandler.buildTable(textValue);
+					break;
+				}
 				case BOLD:
 				{
 					textView.setTypeface(face, Typeface.BOLD);
@@ -461,30 +426,6 @@ public class TextInfoActivity extends Activity {
 					break;
 				}
 				case LEFT:
-				{
-					if(imgView != null){
-						int imageId = getResources().getIdentifier("@drawable/" + textValue, null, getPackageName());
-						Drawable resource = getResources().getDrawable(imageId);
-						imgView.setImageDrawable(resource);
-					}
-					else{
-						Log.e("XMLParser", "Error With <image> tag in page xml");
-					}
-					break;
-				}
-				case ABOVE:
-				{
-					if(imgView != null){
-						int imageId = getResources().getIdentifier("@drawable/" + textValue, null, getPackageName());
-						Drawable resource = getResources().getDrawable(imageId);
-						imgView.setImageDrawable(resource);
-					}
-					else{
-						Log.e("XMLParser", "Error With <image> tag in page xml");
-					}
-					break;
-				}
-				case BELOW:
 				{
 					if(imgView != null){
 						int imageId = getResources().getIdentifier("@drawable/" + textValue, null, getPackageName());

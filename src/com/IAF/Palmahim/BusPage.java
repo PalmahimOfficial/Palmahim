@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.Html;
 import android.text.SpannableString;
+import android.text.style.BulletSpan;
 import android.text.style.UnderlineSpan;
 import android.view.Gravity;
 import android.view.TextureView;
@@ -23,6 +24,8 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
@@ -42,9 +45,9 @@ public class BusPage extends Activity {
 			"אוטובוס צבאי 23 מקומות_שעה;מסלול;יום א';יום ב';יום ג';יום ד';יום ה'_07:20;רכבת יבנה לבסיס;.;.;.;.;._07:30;רכבת ראשונים לבסיס;.;.;.;.;._08:00;רכבת יבנה לבסיס;.;.;.;.;.",
 			"אוטובוס צבאי 32 מקומות_שעה;מסלול;יום א';יום ב';יום ג';יום ד';יום ה'_06:40;הסעת קבע לרחובות;.;.;.;-;._07:45;רחבת העץ פיזור פנימי;.;.;.;.;._08:00;מה\"ן לרחבת העץ;.;.;.;.;._09:00;רכבת ראשונים לבסיס;.;.;.;.;._09:45;מהעץ לראשונים;.;.;.;.;._10:00;רכבת ראשונים לבסיס;.;.;.;.;._10:45;מה\"ן לרחבת העץ;.;.;.;.;._11:45;מבנה 23 + מוסכים;.;.;.;.;._13:00;מהעץ למיבנה 23 מוסכים;.;.;.;.;._13:30;רחבת העץ פיזור פנימי;.;.;.;.;._13:45;מה\"ן לרחבת העץ;.;.;.;.;._14:00;רחבת העץ פיזור פנימי;.;.;.;.;._14:00;רחבת העץ לרכבת יבנה;.;.;.;.;._14:15;מימה\"ן לרחבת העץ;.;.;.;.;._15:00;מהעץ לרכבת ראשונים;.;.;.;.;.",
 			"אוטובוס צבאי 42 מקומות_שעה;מסלול;יום א';יום ב';יום ג';יום ד';יום ה'_06:40;הסעת קבע לוד;.;.;.;.;._07:45;רחבת העץ פיזור פנימי;.;.;.;.;._08:30;רחבת העץ פיזור פנימי;.;.;.;.;.",
-			"ימי א' בלבד - אוטובוס אזרחי_שעה;מסלול;יום א';יום ב';יום ג';יום ד';יום ה'_07:30;רכבת יבנה לבסיס.;-;-;-;-_08:00;מהעץ לרכבת יבנה;.;-;-;-;-_08:30;רכבת יבנה לבסיס;.;-;-;-;-_09:00;מהעץ לרכבת יבנה;.;-;-;-;-_09:30;רכבת יבנה לבסיס;.;-;-;-;-_10:00;מהעץ לרכבת יבנה;.;-;-;-;-_10:30;רכבת יבנה לבסיס;.;-;-;-;-_11:00;מהעץ לרכבת יבנה;.;-;-;-;-_11:30;רכבת יבנה לבסיס;.;-;-;-;-_12:00;מהעץ לרכבת יבנה;.;-;-;-;-_12:30;רכבת יבנה לבסיס;.;-;-;-;-_13:00;מהעץ לרכבת יבנה;.;-;-;-;-_13:30;רכבת יבנה לבסיס;.;-;-;-;-_"};
+	"ימי א' בלבד - אוטובוס אזרחי_שעה;מסלול;יום א';יום ב';יום ג';יום ד';יום ה'_07:30;רכבת יבנה לבסיס.;-;-;-;-_08:00;מהעץ לרכבת יבנה;.;-;-;-;-_08:30;רכבת יבנה לבסיס;.;-;-;-;-_09:00;מהעץ לרכבת יבנה;.;-;-;-;-_09:30;רכבת יבנה לבסיס;.;-;-;-;-_10:00;מהעץ לרכבת יבנה;.;-;-;-;-_10:30;רכבת יבנה לבסיס;.;-;-;-;-_11:00;מהעץ לרכבת יבנה;.;-;-;-;-_11:30;רכבת יבנה לבסיס;.;-;-;-;-_12:00;מהעץ לרכבת יבנה;.;-;-;-;-_12:30;רכבת יבנה לבסיס;.;-;-;-;-_13:00;מהעץ לרכבת יבנה;.;-;-;-;-_13:30;רכבת יבנה לבסיס;.;-;-;-;-_"};
 	String TREMPS_RULES = "חל איסור מוחלט לנסוע בטרמפים, מלבד מטרמפיאדת עין הקורא/יבנה ובהתאם לנהלים הר\"מ. בעת עלייה לטרמפ בצע שיחה קלה עם הנה בדוק אם יש לנהג אישור כניסה עדכני לבסיס/תעודת קצין/נגד/חוגר/צ\"א בדוק אם התמונה בתעודה תואמת לנהג ושהתעודה בתוקף אל תעלה על רכב שאינו בעל לוחית זיהוי ישראלית אל תעלה על רכב שנהגו עצר מיוזמתו והתנהגותו נראית חשודה אל תמסור את יעד נסיעתך אלא שאל את הנהג על יעד נסיעתו אל תיכנס לרכב שבו המושב הקדמי פנוי ובמושב האחורי יושבים נוסעים בזמן נסיעתך בטרמפ או בתחבורה ציבורית, דאג שנשקך עליך יאובטח כהלכה. לחיילות: אל תעלי לרכב שאינו צבאי אלא אם כן עולה איתך חייל נוסף. בימים א'-ה' בשעות: 07:00-11:00 , ישנו קצין/נגד תורן בטרמפיאדות עין הקורא וביבנה המוודא את הבדיקה הנ\"ל ומאשר לחיילים לעלות על טרמפים לבסיס בהתאם.";
-	
+
 	LinearLayout navigationLayout = null;
 	TextView staticTextView = null;
 	int[] COLORS = {R.color.darkred,R.color.blue};
@@ -172,8 +175,6 @@ public class BusPage extends Activity {
 	}
 
 
-
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -191,15 +192,13 @@ public class BusPage extends Activity {
 
 		ScrollView sv = (ScrollView) findViewById(R.id.scrollBodyContent);
 		LinearLayout linearLayout = (LinearLayout)sv.findViewById(R.id.pageBodyContent);
-
 		TextView TrempsRules = (TextView)linearLayout.findViewById(R.id.TrempRules);
 		TrempsRules.setText(TREMPS_RULES);
-		
+
 		//build First Table
+		TableHandler tH = new TableHandler(getApplicationContext(), linearLayout);
 		for(int i=0 ; i<Tables.length; i++){
-			TableLayout tableLayout = (TableLayout)linearLayout.getChildAt(2+i);
-			tableLayout.setPadding(0, 10, 0, 10);
-			buildTable(tableLayout ,Tables[i],7);
+			tH.buildTable(Tables[i]);
 		}
 
 		RelativeLayout navigationRelativeLayout = (RelativeLayout)this.findViewById(R.id.menuLayout);
@@ -275,68 +274,5 @@ public class BusPage extends Activity {
 		{
 
 		}
-	}
-
-	private void buildTable(TableLayout tableLayout ,String content ,int numOfCols){
-		String[] rows  = content.split("_");
-
-		//tableLayout.setColumnStretchable(numOfCols-2, true);
-		TableRow.LayoutParams rowParams = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
-		tableLayout.removeAllViews();
-
-
-		for(int i=0;i<rows.length;i++){
-			String row  = rows[i];
-			TableRow tableRow = new TableRow(getApplicationContext());
-			if(i<=1){
-				tableRow.setBackgroundColor(getResources().getColor(R.color.darkblue));
-			}
-			else{
-				tableRow.setBackgroundColor(getResources().getColor(getNextColor(i)));
-			}
-			tableRow.setLayoutParams(rowParams);
-			if(i==0){
-				tableRow.setWeightSum(1f);
-				tableRow.setBackgroundColor(getResources().getColor(R.color.white));
-			}
-			else{
-				tableRow.setWeightSum(numOfCols +1);
-			}
-			tableRow.setGravity(Gravity.RIGHT);
-			final String[] cols = row.split(";");
-
-
-			for (int j = cols.length-1; j >=0; j--) {
-
-				String col = cols[j];                                 
-				final TextView columsView = buildTextView();
-				if(col.equals(".")){
-					col =Html.fromHtml("&#8226;").toString();
-				}
-				if(i==0){
-					columsView.setTypeface(columsView.getTypeface(), Typeface.BOLD);
-					columsView.setTextColor(getResources().getColor(R.color.black));
-					columsView.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT,1f));
-				}
-				else{
-					if(j == 1){
-						columsView.setLayoutParams(new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT,2f));
-					}
-					else{
-						columsView.setLayoutParams(new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT,1f));
-					}
-				}
-				columsView.setText(col);//String.format("%7s", col));
-				tableRow.addView(columsView);
-			}
-			tableLayout.addView(tableRow,new TableLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-		}
-	}
-
-
-
-
-	private int getNextColor(int i) {
-		return COLORS[i%2];
 	}
 }
