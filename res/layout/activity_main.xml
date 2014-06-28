@@ -6,6 +6,16 @@
     android:gravity="left"
     android:layoutDirection="rtl"
     android:orientation="vertical" >
+    
+    <ImageView
+        android:id="@+id/splashscreenimage"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_centerInParent="true"
+        android:scaleType="fitCenter"
+        android:src="@drawable/splash_screen"
+        android:visibility="invisible"
+        android:contentDescription="@null"/>
 
     <ScrollView
         android:id="@+id/scrollView1"

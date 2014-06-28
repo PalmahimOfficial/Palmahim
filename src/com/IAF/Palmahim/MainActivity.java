@@ -1,11 +1,14 @@
 package com.IAF.Palmahim;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +29,29 @@ import android.widget.ViewSwitcher.ViewFactory;
 
 public class MainActivity extends Activity {
 
+	// For Splash Screen
+	
+    private static final int STOPSPLASH = 0;
+    //time in milliseconds
+    private static final long SPLASHTIME = 5000;
+    private ImageView splash;
+	private Handler splashHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+                switch (msg.what) {
+                case STOPSPLASH:
+                        //remove SplashScreen from view
+                        splash.setVisibility(View.GONE);
+                		for (View v : mainViews){
+                			v.setVisibility(View.VISIBLE);
+                		}
+                        break;
+                }
+                super.handleMessage(msg);
+        }
+	};
+	private View[] mainViews;
+    
 	public static MainActivity mainWindow;
 	public String pageXml;
 	private ImageSwitcher imageSwitcher;
@@ -38,11 +64,6 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		mainWindow = this;
-		
-		pageXml = "Undefined";
-		rand = new Random();
-		
 		// Remove title bar
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
@@ -52,6 +73,25 @@ public class MainActivity extends Activity {
 		
 		setContentView(R.layout.activity_main);
 		
+		mainWindow = this;
+		
+		mainViews = new View[]{
+				findViewById(R.id.scrollView1),
+				findViewById(R.id.photosView),
+				findViewById(R.id.headerMainActivity)
+		};
+		for (View v : mainViews){
+			v.setVisibility(View.INVISIBLE);
+		}
+		
+		splash = (ImageView) findViewById(R.id.splashscreenimage);
+		splash.setVisibility(View.VISIBLE);
+		Message msg = new Message();
+		msg.what = STOPSPLASH;
+		splashHandler.sendMessageDelayed(msg, SPLASHTIME);
+		
+		pageXml = "Undefined";
+		rand = new Random();
 		
 		imageSwitcher = (ImageSwitcher) findViewById(R.id.photosView);
 		
