@@ -179,14 +179,15 @@
         </RelativeLayout>
     </ScrollView>
     
-    <ImageSwitcher
+    <ImageView
         android:id="@+id/photosView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="@dimen/MainActivityRollImageVerticalSize"
+        android:scaleType="fitCenter"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:onClick="switchImage" >
-    </ImageSwitcher>
+    </ImageView>
        
     <RelativeLayout
         android:id="@+id/headerMainActivity"

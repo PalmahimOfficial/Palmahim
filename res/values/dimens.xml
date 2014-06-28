@@ -12,10 +12,11 @@
     <dimen name="main_activity_header_title_height">60dp</dimen>
     <dimen name="main_activity_header_padding">10dp</dimen>
     <dimen name="main_activity_title_text_size">20sp</dimen>
-    <dimen name="pages_footer_title_height">40dp</dimen>
+    <dimen name="pages_footer_title_height">70dp</dimen>
     <dimen name="pages_header_tilte_size">40sp</dimen>
     <dimen name="pages_body_text_size">12sp</dimen>
     <dimen name="pages_body_headers_size">14sp</dimen>
     <dimen name="head_link_text_size">10sp</dimen>
-
+    <dimen name="head_link_static_text_size">15sp</dimen>
+	<dimen name="tablePaddingSize">80dp</dimen>
 </resources>
