@@ -29,6 +29,7 @@ public class MainActivity extends Activity {
 	public static MainActivity mainWindow;
 	public String pageXml;
 	private ImageSwitcher imageSwitcher;
+	private ImageView footerImageView;
 	private Random rand;
 	private int NUM_OF_SWITCHER_PHOTOS = 8;
 	private Animation in;
@@ -53,13 +54,13 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		
 		
-		imageSwitcher = (ImageSwitcher) findViewById(R.id.photosView);
+		footerImageView = (ImageView) findViewById(R.id.photosView);
 		
 		
 		//set footer banner imageSwitcher
-		imageSwitcher.setFactory(new ViewFactory() {
+/*		footerImageView.setFactory(new ViewFactory() {
 		   public View makeView() {
-			   ImageView imageView = new ImageView(imageSwitcher.getContext());
+			   ImageView imageView = new ImageView(footerImageView.getContext());
 	             imageView.setScaleType(ImageView.ScaleType.CENTER);
 
 	            imageView.setLayoutParams(new ImageSwitcher.LayoutParams(
@@ -67,16 +68,16 @@ public class MainActivity extends Activity {
 
 		      return imageView;
 		   }
-		});
-		in = AnimationUtils.loadAnimation(MainActivity.this,android.R.anim.slide_in_left);
+		});*/
+		in = AnimationUtils.loadAnimation(MainActivity.this,android.R.anim.fade_in);
 		out = AnimationUtils.loadAnimation(MainActivity.this,android.R.anim.slide_out_right);
-		imageSwitcher.setInAnimation(in);
-		imageSwitcher.setOutAnimation(out);
-		imageSwitcher.postDelayed(new Runnable() {
+		footerImageView.setAnimation(in);
+		footerImageView.startAnimation(in);
+		footerImageView.postDelayed(new Runnable() {
             int i = 0;
             public void run() {
                 switchImage(null);
-                imageSwitcher.postDelayed(this, 10000);
+                footerImageView.postDelayed(this, 10000);
             }
         }, 10000);
 		
@@ -107,14 +108,13 @@ public class MainActivity extends Activity {
 	}
 	
 	public void switchImage(View view){
-		imageSwitcher.setInAnimation(in);
-		imageSwitcher.setOutAnimation(out);
-		imageSwitcher.setBackgroundResource(getNextImage(rand.nextInt(NUM_OF_SWITCHER_PHOTOS-1)));
+		footerImageView.startAnimation(in);
+		footerImageView.setImageDrawable(getResources().getDrawable(getNextImage(rand.nextInt(NUM_OF_SWITCHER_PHOTOS-1))));
 	}
 
 	private int getNextImage(int photoIndex) {
 		String nextImage = "roll_bar_image_"+photoIndex;
-		System.out.println("roll_bar_image_"+photoIndex);
+		
 		return getResources().getIdentifier("@drawable/" + nextImage, null, getPackageName());
 	}
 	

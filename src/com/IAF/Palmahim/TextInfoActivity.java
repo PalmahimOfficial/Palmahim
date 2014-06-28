@@ -154,7 +154,7 @@ public class TextInfoActivity extends Activity {
 		textView.setGravity(Gravity.CENTER);
 		textView.setTextColor(getResources().getColor(android.R.color.black));
 		textView.setTextSize(getResources().getDimension(R.dimen.pages_body_text_size));
-		((TextView)findViewById(R.id.pageTextTitleText)).setTypeface(face, Typeface.NORMAL);
+		textView.setTypeface(face, Typeface.NORMAL);
 		textView.setLayoutParams(paramsExample);
 		return textView;
 	}
