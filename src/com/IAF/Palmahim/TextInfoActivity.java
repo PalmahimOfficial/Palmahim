@@ -115,6 +115,7 @@ public class TextInfoActivity extends Activity {
 	private int sectionId = 0;
 	private TagState tagState = TagState.DEFAULT;
 	private boolean isImage = false;
+	int TABLES_SIZE;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -128,7 +129,7 @@ public class TextInfoActivity extends Activity {
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 		setContentView(R.layout.activity_text_info);
-
+		TABLES_SIZE = (int) getResources().getDimension(R.dimen.pageTablesSize);
 		try {
 			generatePageFromAnXML();
 		} catch (XmlPullParserException e) {
@@ -175,7 +176,6 @@ public class TextInfoActivity extends Activity {
 
 		//Footer Banner RelativeLayout and ImageView
 		RelativeLayout footerLayout = (RelativeLayout)findViewById(R.id.footerBanner);
-		ImageView footerImage = (ImageView)findViewById(R.id.footerBannerImage);
 		
 		//Tables Handler
 		TableHandler tablesHandler = new TableHandler(getApplicationContext(),pageBody);
@@ -255,7 +255,7 @@ public class TextInfoActivity extends Activity {
 					break;
 				case TEXT:
 				{
-					textView.setPadding(0, 0, 0, 0);
+					textView.setPadding(0, 2, 0, 2);
 					addTextTo.addView(textView, addTextTo.getChildCount());
 					if(!isImage){
 						tagState = TagState.SECTION;
@@ -281,7 +281,7 @@ public class TextInfoActivity extends Activity {
 				case BULLET:
 				{
 					LinearLayout.LayoutParams marginLayoutParams = new LinearLayout.LayoutParams(textView.getLayoutParams());
-					marginLayoutParams.setMargins(0, -5, 20, -5);
+					marginLayoutParams.setMargins(0, -2, 20, -2);
 					addTextTo.addView(textView, addTextTo.getChildCount(),marginLayoutParams);
 					if(!isImage){
 						tagState = TagState.SECTION;
@@ -398,7 +398,7 @@ public class TextInfoActivity extends Activity {
 				}
 				case TABLE:
 				{
-					tablesHandler.buildTable(textValue);
+					tablesHandler.buildTable(textValue,TABLES_SIZE);
 					break;
 				}
 				case BOLD:
@@ -461,8 +461,8 @@ public class TextInfoActivity extends Activity {
 				case FOOTER:
 				{
 					int imageId = getResources().getIdentifier("@drawable/" + textValue, null, getPackageName());
-					Drawable resource = getResources().getDrawable(imageId);
-					footerImage.setImageDrawable(resource);
+					//Drawable resource = getResources().getDrawable(imageId);
+					footerLayout.setBackgroundResource(imageId);
 					break;
 				}
 				default:
