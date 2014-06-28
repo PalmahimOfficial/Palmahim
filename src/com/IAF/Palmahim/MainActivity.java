@@ -33,7 +33,7 @@ public class MainActivity extends Activity {
 	
     private static final int STOPSPLASH = 0;
     //time in milliseconds
-    private static final long SPLASHTIME = 5000;
+    private static final long SPLASHTIME = 3000;
     private ImageView splash;
 	private Handler splashHandler = new Handler() {
         @Override
