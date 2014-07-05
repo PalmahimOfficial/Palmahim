@@ -1,5 +1,7 @@
 package com.IAF.Palmahim;
 
+import java.util.zip.Inflater;
+
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -9,6 +11,7 @@ import android.os.Message;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
+import android.view.View;
 import android.widget.ImageView;
 
 public class ChangeLog {
@@ -115,15 +118,15 @@ public class ChangeLog {
     }
 
     private AlertDialog getDialog() {
-    	ImageView firstTimeImage = new ImageView(this.context);
-    	firstTimeImage.setImageDrawable(context.getResources().getDrawable(R.drawable.first_time_screen));
+//    	ImageView firstTimeImage = new ImageView(this.context);
+//    	firstTimeImage.setImageDrawable(context.getResources().getDrawable(R.drawable.first_time_screen));
 
         AlertDialog.Builder builder = new AlertDialog.Builder(
                 new ContextThemeWrapper(
                         this.context, android.R.style.Theme_Dialog));
         builder.setTitle(
                 context.getResources().getString(R.string.changelog_full_title))
-                .setView(firstTimeImage)
+                .setView(View.inflate(context, R.layout.alert_screen_layout, null))
                 .setCancelable(false)
                 // OK button
                 .setPositiveButton(

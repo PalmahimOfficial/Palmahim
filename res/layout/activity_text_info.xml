@@ -37,7 +37,7 @@
         android:divider="@drawable/divider"
         android:showDividers="middle"
         android:dividerPadding="5dp"
-        android:layout_gravity="right"
+        android:gravity="right"
         android:orientation="horizontal" >
 
 

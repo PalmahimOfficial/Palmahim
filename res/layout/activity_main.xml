@@ -6,16 +6,6 @@
     android:gravity="left"
     android:layoutDirection="rtl"
     android:orientation="vertical" >
-    
-    <ImageView
-        android:id="@+id/splashscreenimage"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_centerInParent="true"
-        android:scaleType="fitCenter"
-        android:src="@drawable/splash_screen"
-        android:visibility="invisible"
-        android:contentDescription="@null"/>
 
     <ScrollView
         android:id="@+id/scrollView1"
@@ -28,7 +18,6 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
-        android:visibility="invisible"
         android:requiresFadingEdge="vertical" >
 
         <RelativeLayout
@@ -179,27 +168,12 @@
             </LinearLayout>
         </RelativeLayout>
     </ScrollView>
-    
-    <ImageView
-        android:id="@+id/photosView"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/MainActivityRollImageVerticalSize"
-        android:scaleType="centerCrop"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:visibility="invisible"
-        android:paddingLeft="50dp"
-        android:paddingRight="50dp"
-        android:paddingBottom="50dp"
-        android:onClick="switchImage" >
-    </ImageView>
-       
+         
     <RelativeLayout
         android:id="@+id/headerMainActivity"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/main_activity_header_title_height"
         android:layout_alignParentTop="true"
-        android:visibility="invisible"
         android:background="@drawable/info_header_bg" >
 
         <ImageView
@@ -221,7 +195,7 @@
             android:layout_height="@dimen/main_activity_header_title_height"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:layout_marginRight="7dp"
+            android:layout_marginLeft="7dp"
             android:adjustViewBounds="true"
             android:contentDescription="@null"
             android:paddingRight="@dimen/main_activity_header_padding"
@@ -244,5 +218,29 @@
             android:textStyle="bold" />
 
     </RelativeLayout>
+    
+   <ImageView 
+        android:id="@+id/enlargedImage"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"/>
+    
+    <HorizontalScrollView
+        android:id="@+id/baseImagesScroolView"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:requiresFadingEdge="horizontal" >
+        
+	        <LinearLayout
+	        android:id="@+id/baseImages"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:gravity="right"
+	        android:orientation="horizontal" />
+	  </HorizontalScrollView>
+
 
 </RelativeLayout>

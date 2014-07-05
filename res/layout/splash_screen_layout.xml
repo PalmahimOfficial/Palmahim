@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/splashScreenRelativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="@color/lightblue">
+    
+    <RelativeLayout
+        android:id="@+id/titleLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/pages_header_title_height"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/info_header_bg"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/headerTitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/pages_header_tilte_size" />
+    </RelativeLayout>
+    
+    <ImageView
+            android:id="@+id/footerBannerImage"
+            android:layout_width="@dimen/splashScreenImage"
+            android:layout_height="@dimen/splashScreenImage"
+            android:layout_centerInParent="true"
+            android:contentDescription="@null"
+            android:src="@drawable/palmachim_symbol"
+            android:scaleType="fitXY" />
+
+    <TextView
+        android:id="@+id/splashMainText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/footerBannerImage"
+        android:textSize="@dimen/splash_screen_main_text_size"
+        android:text="בסיס פלמחים"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@color/darkblue"
+        android:layout_centerHorizontal="true" />
+    
+        <TextView
+            android:id="@+id/splashSubText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/splashMainText"
+            android:textSize="@dimen/splash_screen_sub_text_size"
+            android:text="כל מה שרצית לדעת..."
+        	android:gravity="center"
+        	android:textColor="@color/white"
+            android:layout_centerHorizontal="true" />
+    
+    <RelativeLayout
+        android:id="@+id/footerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/pages_header_title_height"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/info_header_bg"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/footerTitleImage"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/pages_header_tilte_size" />
+    </RelativeLayout>
+
+</RelativeLayout>

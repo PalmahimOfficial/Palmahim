@@ -6,6 +6,7 @@ import android.text.Html;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.TableLayout;
@@ -22,6 +23,7 @@ public class TableHandler {
 	public TableHandler(Context context ,LinearLayout parent){
 		this.context = context;
 		this.parent = parent;
+		COLS_AVG_SIZE = (int) context.getResources().getDimension(R.dimen.table_cols_avg_size);
 	}
 	
 	private TextView buildTextView(){   
@@ -33,15 +35,16 @@ public class TableHandler {
 		//textView.setId(id);
 		textView.setGravity(Gravity.CENTER);
 		textView.setTextColor(context.getResources().getColor(android.R.color.white));
-		textView.setTextSize(context.getResources().getDimension(R.dimen.head_link_text_size));
+		textView.setTextSize(context.getResources().getDimension(R.dimen.table_text_size));
 		textView.setPadding(5, 5, 5, 5);
 		textView.setTypeface(face, Typeface.NORMAL);
 		textView.setLayoutParams(paramsExample);
 		return textView;
 	}
 
-	public void buildTable(final String tableContent, int width){
+	public void buildTable(final String tableContent, int width, final boolean isContentClickable){
 		TextView tableTextView = buildTextView();
+		tableTextView.setTextSize(context.getResources().getDimension(R.dimen.table_header_text_size));
 		final int numOfCols = tableContent.split("_")[1].split(";").length;
 		LinearLayout.LayoutParams llp = new LinearLayout.LayoutParams(numOfCols*COLS_AVG_SIZE,LayoutParams.WRAP_CONTENT);
 		llp.setMargins(0, 10, 0, 10);
@@ -66,25 +69,28 @@ public class TableHandler {
 				TableLayout tmpTableLayout = new TableLayout(context.getApplicationContext());
 				tmpTableLayout.setLayoutParams(v.getLayoutParams());
 				buildTable(tmpTableLayout ,tableContent, numOfCols);
-				tmpTableLayout.setOnClickListener(new OnClickListener() {
-
-					TableLayout relatedTable = null;
-
-					@Override
-					public void onClick(View v) {
-						relatedTable = (TableLayout)v;
-						LinearLayout parent = (LinearLayout)v.getParent();
-						parent.removeViewAt(relatedIndex);
-						parent.addView(relatedTextView, relatedIndex);
-						FX.slide_up(context.getApplicationContext(), v);
-
-					}
-				});
+					tmpTableLayout.setOnLongClickListener(new OnLongClickListener() {
+						TableLayout relatedTable = null;
+						@Override
+						public boolean onLongClick(View v) {
+							relatedTable = (TableLayout)v;
+							LinearLayout parent = (LinearLayout)v.getParent();
+							parent.removeViewAt(relatedIndex);
+							parent.addView(relatedTextView, relatedIndex);
+							FX.slide_up(context.getApplicationContext(), v);
+							return true;
+						}
+					});
+					
 				parent.removeViewAt(relatedIndex);
 				parent.addView(tmpTableLayout, relatedIndex);
 				FX.slide_down(context.getApplicationContext(), tmpTableLayout);
 			}
 		});
+	}
+	
+	public TableRow getCustomTableRow(Context context){
+		return new TableRow(context.getApplicationContext());
 	}
 	
 	private void buildTable(TableLayout tableLayout ,String content, int numOfCols){
@@ -97,7 +103,7 @@ public class TableHandler {
 
 		for(int i=0;i<rows.length;i++){
 			String row  = rows[i];
-			TableRow tableRow = new TableRow(context.getApplicationContext());
+			TableRow tableRow = getCustomTableRow(context);
 			if(i<=1){
 				tableRow.setBackgroundColor(context.getResources().getColor(R.color.darkblue));
 			}

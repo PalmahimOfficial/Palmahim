@@ -13,4 +13,7 @@
     <dimen name="pages_body_text_size">16sp</dimen>
     <dimen name="pages_body_headers_size">20sp</dimen>
     <dimen name="head_link_text_size">14sp</dimen>
+        <dimen name="table_text_size">12sp</dimen>
+    <dimen name="table_header_text_size">17sp</dimen>
+    <dimen name="table_cols_avg_size">100dp</dimen>
 </resources>

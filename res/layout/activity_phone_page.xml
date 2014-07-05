@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
-            android:text="דרכי הגעה"
+            android:text="טלפונים"
             android:textColor="@color/white"
             android:textSize="@dimen/pages_header_tilte_size" />
     </RelativeLayout>
@@ -43,7 +43,7 @@
             android:id="@+id/navigationLinearLayout"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
             android:divider="@drawable/divider"
             android:dividerPadding="5dp"
             android:gravity="center"
@@ -70,17 +70,17 @@
             android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/TrempRulesHeader"
+                android:id="@+id/phonesTextHeader"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:padding="5dp"
                 android:textSize="@dimen/pages_header_tilte_size"
                 android:textColor="@color/blue"
-                android:text = "כללי נסיעה בטרמפים" />
+                android:text = "טלפונים חשובים" />
             
             <TextView
-                android:id="@+id/TrempRules"
+                android:id="@+id/phonesText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
