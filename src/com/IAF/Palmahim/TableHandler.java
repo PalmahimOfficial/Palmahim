@@ -42,7 +42,7 @@ public class TableHandler {
 		return textView;
 	}
 
-	public void buildTable(final String tableContent, int width, final boolean isContentClickable){
+	public void buildTable(final String tableContent, final boolean isContentClickable){
 		TextView tableTextView = buildTextView();
 		tableTextView.setTextSize(context.getResources().getDimension(R.dimen.table_header_text_size));
 		final int numOfCols = tableContent.split("_")[1].split(";").length;
@@ -60,31 +60,34 @@ public class TableHandler {
 
 			TextView relatedTextView = null;
 			int relatedIndex = 0;
+			TableLayout table = null;
 			@Override
 			public void onClick(View v) {
 				relatedTextView = (TextView)v;
 				LinearLayout parent = ((LinearLayout)v.getParent());
 				relatedIndex = parent.indexOfChild(v);
 
-				TableLayout tmpTableLayout = new TableLayout(context.getApplicationContext());
-				tmpTableLayout.setLayoutParams(v.getLayoutParams());
-				buildTable(tmpTableLayout ,tableContent, numOfCols);
-					tmpTableLayout.setOnLongClickListener(new OnLongClickListener() {
-						TableLayout relatedTable = null;
-						@Override
-						public boolean onLongClick(View v) {
-							relatedTable = (TableLayout)v;
-							LinearLayout parent = (LinearLayout)v.getParent();
-							parent.removeViewAt(relatedIndex);
-							parent.addView(relatedTextView, relatedIndex);
-							FX.slide_up(context.getApplicationContext(), v);
-							return true;
-						}
-					});
+				if(table == null){
+					table = new TableLayout(context.getApplicationContext());
+					table.setLayoutParams(v.getLayoutParams());
+						buildTable(table ,tableContent, numOfCols);
+					
+					table.setOnClickListener(new OnClickListener() {
+							TableLayout relatedTable = null;
+							@Override
+							public void onClick(View v) {
+								relatedTable = (TableLayout)v;
+								LinearLayout parent = (LinearLayout)v.getParent();
+								parent.removeViewAt(relatedIndex);
+								parent.addView(relatedTextView, relatedIndex);
+								FX.slide_up(context.getApplicationContext(), v);
+							}
+						});
+				}
 					
 				parent.removeViewAt(relatedIndex);
-				parent.addView(tmpTableLayout, relatedIndex);
-				FX.slide_down(context.getApplicationContext(), tmpTableLayout);
+				parent.addView(table, relatedIndex);
+				FX.slide_down(context.getApplicationContext(), table);
 			}
 		});
 	}

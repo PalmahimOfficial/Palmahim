@@ -184,7 +184,6 @@ public class PhonesPage extends Activity {
 
 		setContentView(R.layout.activity_phone_page);
 
-		TABLES_SIZE = (int) getResources().getDimension(R.dimen.busPageTablesSize);
 		ScrollView sv = (ScrollView) findViewById(R.id.scrollBodyContent);
 		LinearLayout linearLayout = (LinearLayout)sv.findViewById(R.id.pageBodyContent);
 		TextView TrempsRules = (TextView)linearLayout.findViewById(R.id.phonesText);
@@ -193,7 +192,7 @@ public class PhonesPage extends Activity {
 		//build First Table
 		TableHandler tH = new TableHandler(getApplicationContext(), linearLayout);
 		for(int i=0 ; i<Tables.length; i++){
-			tH.buildTable(Tables[i],TABLES_SIZE,false);
+			tH.buildTable(Tables[i],false);
 		}
 
 		RelativeLayout navigationRelativeLayout = (RelativeLayout)this.findViewById(R.id.menuLayout);

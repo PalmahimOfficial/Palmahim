@@ -43,7 +43,7 @@
             android:id="@+id/navigationLinearLayout"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
             android:divider="@drawable/divider"
             android:dividerPadding="5dp"
             android:gravity="center"

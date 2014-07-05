@@ -18,7 +18,9 @@ import android.text.Html;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.HorizontalScrollView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -112,12 +114,12 @@ public abstract class XMLCustomParser {
 	ScrollView scrollView;
 	Typeface face;
 	HorizontalScrollView scrollBodyLinksContent;
-	
+
 	public XMLCustomParser(Context context) {
 		this.context = context;
 	}
-	
-	
+
+
 	private TextView buildTextView(int id){   
 		// the following change is what fixed it
 		TextView textView = new TextView(context);
@@ -132,11 +134,11 @@ public abstract class XMLCustomParser {
 		textView.setLayoutParams(paramsExample);
 		return textView;
 	}
-	
+
 	@SuppressLint("InlinedApi") public void generatePageFromAnXML()
 			throws XmlPullParserException, IOException
 			{
-		
+
 		setup();
 		//image Layouts and texts
 		RelativeLayout relativeImageTextLayout = null;
@@ -148,10 +150,10 @@ public abstract class XMLCustomParser {
 
 		//Footer Banner RelativeLayout and ImageView
 		RelativeLayout footerLayout = getFooterLayout();
-		
+
 		//Tables Handler
 		tablesHandler = getTableHandler();
-		
+
 		addTextTo = pageBody;
 		Resources res = context.getResources();
 		int xmlId = getXML();
@@ -164,53 +166,53 @@ public abstract class XMLCustomParser {
 			{
 				tagState = TagState.getEnum(xpp.getName());
 				switch(tagState){
-					case IMAGE:
-					{
-						isImage = true;
-						
-						relativeImageTextLayout = new RelativeLayout(context);
-						imgView = new ImageView(context);
-						imgView.setLayoutParams(new LayoutParams(
-								LayoutParams.WRAP_CONTENT,
-								LayoutParams.MATCH_PARENT));
-						relativeImageTextLayout.setGravity(Gravity.CENTER);
-						imgView.setId(sectionId++);
-						
-						imageTextLinearLayout.setLayoutParams(new LayoutParams(
-								LayoutParams.WRAP_CONTENT,
-								LayoutParams.MATCH_PARENT));
-						imageTextLinearLayout.setOrientation(LinearLayout.VERTICAL);
-						imageTextLinearLayout.setPadding(7, 7, 7, 7);
-						imageTextLinearLayout.setId(sectionId++);
-						addTextTo = imageTextLinearLayout;
-						break;
-					}
-					case HEADER:
-					{
-						textView = buildTextView(sectionId++);
-						break;
-					}
-					case TEXT:
-					{
-						textView = buildTextView(sectionId++);
-						break;
-					}
-					case BOLD:
-					{
-						textView = buildTextView(sectionId++);
-						break;
-					}
-					case BULLET:
-					{
-						textView = buildTextView(sectionId++);
-						break;
-					}
-					case NUMBER:
-					{
-						textView = buildTextView(sectionId++);
-						break;
-					}
-					
+				case IMAGE:
+				{
+					isImage = true;
+
+					relativeImageTextLayout = new RelativeLayout(context);
+					imgView = new ImageView(context);
+					imgView.setLayoutParams(new LayoutParams(
+							LayoutParams.WRAP_CONTENT,
+							LayoutParams.MATCH_PARENT));
+					relativeImageTextLayout.setGravity(Gravity.CENTER);
+					imgView.setId(sectionId++);
+
+					imageTextLinearLayout.setLayoutParams(new LayoutParams(
+							LayoutParams.WRAP_CONTENT,
+							LayoutParams.MATCH_PARENT));
+					imageTextLinearLayout.setOrientation(LinearLayout.VERTICAL);
+					imageTextLinearLayout.setPadding(7, 7, 7, 7);
+					imageTextLinearLayout.setId(sectionId++);
+					addTextTo = imageTextLinearLayout;
+					break;
+				}
+				case HEADER:
+				{
+					textView = buildTextView(sectionId++);
+					break;
+				}
+				case TEXT:
+				{
+					textView = buildTextView(sectionId++);
+					break;
+				}
+				case BOLD:
+				{
+					textView = buildTextView(sectionId++);
+					break;
+				}
+				case BULLET:
+				{
+					textView = buildTextView(sectionId++);
+					break;
+				}
+				case NUMBER:
+				{
+					textView = buildTextView(sectionId++);
+					break;
+				}
+
 				}
 			}
 			else if(eventType == XmlPullParser.END_TAG)
@@ -242,7 +244,7 @@ public abstract class XMLCustomParser {
 					LinearLayout.LayoutParams marginLayoutParams = new LinearLayout.LayoutParams(textView.getLayoutParams());
 					marginLayoutParams.setMargins(0, 5, 0, 5);
 					addViewToMainView(textView , marginLayoutParams);
-					
+
 					if(!isImage){
 						tagState = TagState.SECTION;
 					}
@@ -334,34 +336,36 @@ public abstract class XMLCustomParser {
 				case HEAD:
 				{
 					setHeadText(textValue);
-					
+
 					break;
 				}
 				case HEADER:
 				{
 					LinearLayout.LayoutParams marginLayoutParams = new LinearLayout.LayoutParams(textView.getLayoutParams());
 					marginLayoutParams.setMargins(0, 15, 0, 15);
-					
+
 					textView.setTypeface(face, Typeface.BOLD);
 					textView.setTextColor(context.getResources().getColor(android.R.color.holo_blue_dark));
 					textView.setTextSize(context.getResources().getDimension(R.dimen.pages_body_headers_size));
 					textView.setText(textValue);
 					addViewToMainView(textView, marginLayoutParams);
-					
+
 					// Putting link in the head
-					TextView newTextView = new TextView(context);
-					newTextView.setPadding(12, 5, 12, 5);
-					newTextView.setTextColor(context.getResources().getColor(android.R.color.white));
-					newTextView.setTextSize(context.getResources().getDimension(R.dimen.head_link_text_size));
-					newTextView.setText(textValue);
-					newTextView.setTag(textView);
-					newTextView.setOnClickListener(new View.OnClickListener() {
-						@Override
-						public void onClick(View view) {
-							scrollView.scrollTo(0, ((View)view.getTag()).getTop());
-						}
-					});
-					pageSections.addView(newTextView, 0);
+					if(pageSections != null){
+						TextView newTextView = new TextView(context);
+						newTextView.setPadding(12, 5, 12, 5);
+						newTextView.setTextColor(context.getResources().getColor(android.R.color.white));
+						newTextView.setTextSize(context.getResources().getDimension(R.dimen.head_link_text_size));
+						newTextView.setText(textValue);
+						newTextView.setTag(textView);
+						newTextView.setOnClickListener(new View.OnClickListener() {
+							@Override
+							public void onClick(View view) {
+								scrollView.scrollTo(0, ((View)view.getTag()).getTop());
+							}
+						});
+						pageSections.addView(newTextView, 0);
+					}
 					break;
 				}
 				case TEXT:
@@ -371,13 +375,13 @@ public abstract class XMLCustomParser {
 				}
 				case TABLE:
 				{
-					tablesHandler.buildTable(textValue,TABLES_SIZE,false);
+					tablesHandler.buildTable(textValue,false);
 					break;
 				}
 				case BOLD:
 				{
 					textView.setTypeface(face, Typeface.BOLD);
-					textView.setTextSize(context.getResources().getDimension(R.dimen.head_link_text_size));
+					textView.setTextSize(context.getResources().getDimension(R.dimen.pages_body_text_size));
 					textView.setText(textValue);
 					break;
 				}
@@ -414,28 +418,55 @@ public abstract class XMLCustomParser {
 				}
 				case NUMBER:
 				{
-					textView.setTextColor(context.getResources().getColor(android.R.color.tab_indicator_text));
-					textView.setTypeface(face, Typeface.BOLD);
-					textView.setClickable(true);
-					textView.setOnClickListener(new View.OnClickListener() {
+					LinearLayout ll = new LinearLayout(context);
+					LinearLayout.LayoutParams llLp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+					llLp.setMargins(5, 5, 5, 5);
+					ll.setLayoutParams(llLp);
+					ll.setPadding(5, 5, 5, 5);
+					ll.setOrientation(LinearLayout.HORIZONTAL);
+					ll.setGravity(Gravity.LEFT);
+					ll.setBackgroundColor(context.getResources().getColor(R.color.darkblue));
 
+
+					textView.setTextColor(context.getResources().getColor(android.R.color.white));
+					textView.setTextSize(context.getResources().getDimension(R.dimen.head_link_text_size));
+					textView.setTypeface(face, Typeface.BOLD);
+					textView.setGravity(Gravity.RIGHT);
+					textView.setText(textValue);
+					LinearLayout.LayoutParams lpText = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.MATCH_PARENT);
+					textView.setLayoutParams(lpText);
+
+
+					ImageButton button = new ImageButton(context);
+					button.setImageDrawable(context.getResources().getDrawable(R.drawable.phone_number));
+					button.setOnClickListener(new View.OnClickListener() {
+						TextView textView = null;
 						@Override
 						public void onClick(View v) {
-							String text = ((TextView)v).getText().toString();
+							LinearLayout rl = (LinearLayout)v.getParent();
+							textView = (TextView) rl.getChildAt(1);
+							String text = textView.getText().toString();
 							String[] nameAndPhone = text.split(":");
 							addAsContactConfirmed(nameAndPhone[0] , nameAndPhone[1]);
 						}
 					});
-					textView.setText(textValue);
-					addViewToMainView(textView);
-					//Linkify.addLinks(textView, Linkify.ALL);
+
+					LinearLayout.LayoutParams lpButton = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.MATCH_PARENT);
+					button.setLayoutParams(lpButton);
+					ll.addView(button,lpButton);
+					ll.addView(textView,lpText);
+
+					addViewToMainView(ll,llLp);
+
 					break;
 				}
 				case FOOTER:
 				{
-					int imageId = context.getResources().getIdentifier("@drawable/" + textValue, null, context.getPackageName());
-					//Drawable resource = getResources().getDrawable(imageId);
-					footerLayout.setBackgroundResource(imageId);
+					if(footerLayout != null){
+						int imageId = context.getResources().getIdentifier("@drawable/" + textValue, null, context.getPackageName());
+						//Drawable resource = getResources().getDrawable(imageId);
+						footerLayout.setBackgroundResource(imageId);
+					}
 					break;
 				}
 				default:
@@ -444,18 +475,20 @@ public abstract class XMLCustomParser {
 			}
 			eventType = xpp.next();
 		}
-		
-		new Handler().postDelayed(new Runnable(){   
-			@Override
-			public void run() {
-				//HorizontalScrollView scrollBodyLinksContent = (HorizontalScrollView)findViewById(R.id.scrollBodyLinksContent);
-				scrollBodyLinksContent.scrollTo(scrollBodyLinksContent.getRight(), scrollBodyLinksContent.getTop());
-			    }       
+
+		if(scrollBodyLinksContent != null){
+			new Handler().postDelayed(new Runnable(){   
+				@Override
+				public void run() {
+					//HorizontalScrollView scrollBodyLinksContent = (HorizontalScrollView)findViewById(R.id.scrollBodyLinksContent);
+					scrollBodyLinksContent.scrollTo(scrollBodyLinksContent.getRight(), scrollBodyLinksContent.getTop());
+				}       
 
 			},100L);
+		}
 			}
 
-	
+
 	private void addAsContactConfirmed(String contactName , String contactNumber) {
 
 		Intent intent = new Intent(Intent.ACTION_INSERT);
@@ -468,54 +501,54 @@ public abstract class XMLCustomParser {
 		context.startActivity(intent);
 
 	}
-	
+
 	private void addViewToMainView(View textView,
 			android.widget.LinearLayout.LayoutParams marginLayoutParams) {
 		addTextTo.addView(textView, addTextTo.getChildCount(),marginLayoutParams);
-		
+
 	}
 
 
 	private void addViewToMainView(View textView) {
 		addTextTo.addView(textView, addTextTo.getChildCount());
 	}
-	
+
 	private TableHandler getTableHandler() {
 		return new TableHandler(context.getApplicationContext(),pageBody);
 	}
-	
+
 	public abstract void setup();
-	
+
 	//public abstract LinearLayout getPageBody();
-	
+
 	public abstract int getXML();
-	
+
 	public abstract RelativeLayout getFooterLayout();
-	
+
 	public abstract void setHeadText(String textValue);
-	
+
 	//public abstract TableHandler getTableHandler();
 
-/*	private RelativeLayout getFooterLayout() {
+	/*	private RelativeLayout getFooterLayout() {
 		return (RelativeLayout)findViewById(R.id.footerBanner);
 	}
 
 
-	
+
 
 	private void setHeadText(String textValue) {
 		((TextView)findViewById(R.id.pageTextTitleText)).setText(textValue);
 		((TextView)findViewById(R.id.pageTextTitleText)).setTypeface(face, Typeface.BOLD);
-		
+
 	}
 
 
-	
 
 
 
 
-	
+
+
 	private void setup(){
 		scrollView = (ScrollView)findViewById(R.id.scrollBodyContent);
 		addTextTo = (LinearLayout)scrollView.getChildAt(0);

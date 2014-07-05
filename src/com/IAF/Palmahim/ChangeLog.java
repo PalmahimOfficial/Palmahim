@@ -1,18 +1,27 @@
 package com.IAF.Palmahim;
 
+import java.io.IOException;
 import java.util.zip.Inflater;
+
+import org.xmlpull.v1.XmlPullParserException;
 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.graphics.Typeface;
 import android.os.Message;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.View;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
 
 public class ChangeLog {
 
@@ -21,7 +30,8 @@ public class ChangeLog {
 
     // this is the key for storing the version name in SharedPreferences
     private static final String VERSION_KEY = "PREFS_VERSION_KEY";
-
+    private View activeChangeLog = null;
+    private XMLChangeLogPageParser parser;
     private static final String NO_VERSION = "";
 
     /**
@@ -34,6 +44,8 @@ public class ChangeLog {
      */
     public ChangeLog(Context context) {
         this(context, PreferenceManager.getDefaultSharedPreferences(context));
+        activeChangeLog = View.inflate(context, R.layout.alert_screen_layout, null);
+        parser = new XMLChangeLogPageParser(context);
     }
 
     /**
@@ -117,6 +129,41 @@ public class ChangeLog {
         return this.getDialog();
     }
 
+    private class XMLChangeLogPageParser extends XMLCustomParser{
+
+		public XMLChangeLogPageParser(Context context) {
+			super(context);
+		}
+
+		@Override
+		public void setup() {
+			scrollView = (ScrollView)activeChangeLog.findViewById(R.id.scrollBodyContent);
+			addTextTo = (LinearLayout)scrollView.getChildAt(0);
+			pageBody = (LinearLayout)scrollView.getChildAt(0);
+			scrollBodyLinksContent = null;
+			pageSections = null;
+			face=Typeface.createFromAsset(context.getAssets(),
+					"fonts/Tahoma.ttf");
+		}
+
+		@Override
+		public RelativeLayout getFooterLayout() {
+			return null;
+		}
+
+		@Override
+		public void setHeadText(String textValue) {
+			((TextView)activeChangeLog.findViewById(R.id.pageTextTitleText)).setText(textValue);
+			((TextView)activeChangeLog.findViewById(R.id.pageTextTitleText)).setTypeface(face, Typeface.BOLD);
+		}
+
+		@Override
+		public int getXML() {
+			return context.getResources().getIdentifier("@xml/" + "change_log", null, context.getPackageName());
+		}
+		
+	}
+    
     private AlertDialog getDialog() {
 //    	ImageView firstTimeImage = new ImageView(this.context);
 //    	firstTimeImage.setImageDrawable(context.getResources().getDrawable(R.drawable.first_time_screen));
@@ -124,9 +171,17 @@ public class ChangeLog {
         AlertDialog.Builder builder = new AlertDialog.Builder(
                 new ContextThemeWrapper(
                         this.context, android.R.style.Theme_Dialog));
-        builder.setTitle(
-                context.getResources().getString(R.string.changelog_full_title))
-                .setView(View.inflate(context, R.layout.alert_screen_layout, null))
+        try {
+			parser.generatePageFromAnXML();
+		} catch (XmlPullParserException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+        builder.setView(activeChangeLog)
                 .setCancelable(false)
                 // OK button
                 .setPositiveButton(

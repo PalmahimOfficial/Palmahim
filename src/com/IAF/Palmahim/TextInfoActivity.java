@@ -166,8 +166,7 @@ public class TextInfoActivity extends Activity {
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 		setContentView(R.layout.activity_text_info);
-		TABLES_SIZE = (int) getResources().getDimension(R.dimen.pageTablesSize);
-		parser = new XMLTextPageParser(getApplicationContext());
+		parser = new XMLTextPageParser(this);
 		try {
 			parser.generatePageFromAnXML();
 		} catch (XmlPullParserException e) {

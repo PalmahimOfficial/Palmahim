@@ -116,7 +116,7 @@
                     android:layout_width="@dimen/MainActivityButtonSize"
                     android:layout_height="@dimen/MainActivityButtonSize"
                     android:background="@null"
-                    android:contentDescription="8"
+                    android:contentDescription="phone_book"
                     android:onClick="openPageInformation"
                     android:scaleType="fitCenter"
                     android:src="@drawable/phone" />
